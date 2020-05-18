@@ -1,0 +1,58 @@
+body {
+    font-family: 'Merriweather', serif;
+}
+.content{
+    background-image: url("topography.png");
+    padding: 0% 10%
+}
+img{
+    float: left;
+    padding: 10px 0px;
+    width: 40px;
+}
+.menubar{
+    color: white;
+    background-color: black;
+    padding: 0px 10%;
+    height: 60px;
+}
+nav > ul {
+    padding: 20px;
+    text-align: right;
+}
+
+nav > ul >li {
+    display: inline;
+    padding: 0px 10px;
+}
+
+h1 {
+    margin-top: 0px;
+    padding: 80px 0px 20px 0px;
+    font-size: 3em;
+
+}
+li >a , h3 {
+    color: #ff0099;
+}
+h3 {
+font-size: 2.1em;
+font-weight: lighter;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+h5 {
+    font-size: 2.2em;
+    font-weight: normal;
+    margin-bottom : 20px;
+}
+
+.separate-line{
+    text-align: center;
+    padding: 50px 0px 20px 0px
+}
