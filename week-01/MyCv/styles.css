@@ -62,6 +62,9 @@ div.uvod {
     margin:0px;
     
   }
+  hr{
+    border: 2px solid darkslategrey;
+  }
 
   blockquote::before {
     content: '“';
