@@ -1,0 +1,2 @@
+[Syllabus](https://github.com/green-fox-academy/teaching-materials/blob/master/syllabus/foundation/README.md "Sylabus")
+https://github.com/green-fox-academy/teaching-materials/blob/master/syllabus/foundation/README.md
