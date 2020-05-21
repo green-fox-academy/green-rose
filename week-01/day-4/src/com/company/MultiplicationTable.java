@@ -7,7 +7,7 @@ public class MultiplicationTable {
         System.out.print("Input number to multiplicate: ");
         Scanner scanner = new Scanner(System.in);
         int numberToMultiplicate = scanner.nextInt();
-        for (int i = 1; i <= 10; i ++) {
+        for (int i = 1; i <= 10; i++) {
             System.out.println(i + " * " + numberToMultiplicate + " = " + numberToMultiplicate * i);
         }
     }
