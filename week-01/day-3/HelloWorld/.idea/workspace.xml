@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e1b1038f-6ea2-46a6-8b51-28b5067b4c2a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../HelloWorld/.idea/HelloWorld.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Main/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Main/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Main/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Main/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Main/Main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Main/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../day-4/src/com/company/AnimalsAndLegs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../day-4/src/com/company/AverageOfInput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../day-4/src/com/company/Bmi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../day-4/src/com/company/Cuboid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../day-4/src/com/company/DefineBasicInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../day-4/src/com/company/HelloUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../day-4/src/com/company/MileToKmConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../day-4/src/com/company/SecondsInADay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../day-4/src/com/company/Swap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../day-4/src/com/company/VariableMutation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HelloWorld/META-INF/HelloWorld.kotlin_module" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1cD2wGKdbRerTWhBKqBM3IZTPkE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="CodingHours" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CodingHours" />
+      <module name="HelloWorld" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CodingHours" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e1b1038f-6ea2-46a6-8b51-28b5067b4c2a" name="Default Changelist" comment="" />
+      <created>1590049079946</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590049079946</updated>
+      <workItem from="1590049085799" duration="23000" />
+      <workItem from="1590062829929" duration="472000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1358" height="203" key="GridCell.Tab.0.bottom" timestamp="1590065708879">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state width="1358" height="203" key="GridCell.Tab.0.bottom/-1200.-1129.2048.1129/0.23.1440.835@0.23.1440.835" timestamp="1590065708879" />
+    <state width="1358" height="203" key="GridCell.Tab.0.center" timestamp="1590065708879">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state width="1358" height="203" key="GridCell.Tab.0.center/-1200.-1129.2048.1129/0.23.1440.835@0.23.1440.835" timestamp="1590065708879" />
+    <state width="1358" height="203" key="GridCell.Tab.0.left" timestamp="1590065708879">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state width="1358" height="203" key="GridCell.Tab.0.left/-1200.-1129.2048.1129/0.23.1440.835@0.23.1440.835" timestamp="1590065708879" />
+    <state width="1358" height="203" key="GridCell.Tab.0.right" timestamp="1590065708879">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state width="1358" height="203" key="GridCell.Tab.0.right/-1200.-1129.2048.1129/0.23.1440.835@0.23.1440.835" timestamp="1590065708879" />
+  </component>
+</project>

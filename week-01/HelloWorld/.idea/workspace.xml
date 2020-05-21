@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1d3ed939-a5a6-42db-a794-6f67aef8623c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/HelloWorld.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Main/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Main/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Main/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Main/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Main/Main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Main/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day-4/src/com/company/AnimalsAndLegs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day-4/src/com/company/AverageOfInput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day-4/src/com/company/Bmi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day-4/src/com/company/Cuboid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day-4/src/com/company/DefineBasicInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day-4/src/com/company/HelloUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day-4/src/com/company/MileToKmConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day-4/src/com/company/SecondsInADay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day-4/src/com/company/Swap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day-4/src/com/company/VariableMutation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day-3/HelloWorld/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day-3/HelloWorld/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day-3/HelloWorld/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day-3/HelloWorld/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day-3/HelloWorld/.idea/vcs.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1cB0IAxMuoI1627U3rUcQLfhZEE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunManager" selected="Application.CodingHours">
+    <configuration name="CodingHours" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CodingHours" />
+      <module name="HelloWorld" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelloMe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HelloMe" />
+      <module name="HelloWorld" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HumptyDumpty" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HumptyDumpty" />
+      <module name="HelloWorld" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntroduceYourself" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="IntroduceYourself" />
+      <module name="HelloWorld" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TwoNumbers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TwoNumbers" />
+      <module name="HelloWorld" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CodingHours" />
+        <item itemvalue="Application.TwoNumbers" />
+        <item itemvalue="Application.IntroduceYourself" />
+        <item itemvalue="Application.HumptyDumpty" />
+        <item itemvalue="Application.HelloMe" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1d3ed939-a5a6-42db-a794-6f67aef8623c" name="Default Changelist" comment="" />
+      <created>1589986596272</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589986596272</updated>
+      <workItem from="1589986597498" duration="2370000" />
+      <workItem from="1590044483827" duration="41000" />
+      <workItem from="1590044608657" duration="1523000" />
+      <workItem from="1590048994928" duration="90000" />
+      <workItem from="1590062818996" duration="7000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1358" height="203" key="GridCell.Tab.0.bottom" timestamp="1589989073350">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state width="1358" height="203" key="GridCell.Tab.0.bottom/-1200.-1129.2048.1129/0.23.1440.835@0.23.1440.835" timestamp="1589989073350" />
+    <state width="1358" height="203" key="GridCell.Tab.0.center" timestamp="1589989073350">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state width="1358" height="203" key="GridCell.Tab.0.center/-1200.-1129.2048.1129/0.23.1440.835@0.23.1440.835" timestamp="1589989073350" />
+    <state width="1358" height="203" key="GridCell.Tab.0.left" timestamp="1589989073350">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state width="1358" height="203" key="GridCell.Tab.0.left/-1200.-1129.2048.1129/0.23.1440.835@0.23.1440.835" timestamp="1589989073350" />
+    <state width="1358" height="203" key="GridCell.Tab.0.right" timestamp="1589989073350">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state width="1358" height="203" key="GridCell.Tab.0.right/-1200.-1129.2048.1129/0.23.1440.835@0.23.1440.835" timestamp="1589989073350" />
+    <state x="329" y="159" width="783" height="587" key="NewModule_or_Project.wizard" timestamp="1590049079899">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state x="329" y="159" width="783" height="587" key="NewModule_or_Project.wizard/-1200.-1129.2048.1129/0.23.1440.835@0.23.1440.835" timestamp="1590049079899" />
+    <state x="215" y="91" key="SettingsEditor" timestamp="1590044956812">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state x="215" y="91" key="SettingsEditor/-1200.-1129.2048.1129/0.23.1440.835@0.23.1440.835" timestamp="1590044956812" />
+    <state x="82" y="75" key="new project wizard" timestamp="1590047355410">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="82" y="75" key="new project wizard/-1200.-1129.2048.1129/0.23.1440.877@0.23.1440.877" timestamp="1590047355410" />
+  </component>
+</project>
