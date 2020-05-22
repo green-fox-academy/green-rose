@@ -1,16 +1,17 @@
 import java.util.Scanner;
 
-public class DrawSquare {
+public class DrawDiagonal {
     public static void main(String[] args) {
 
         System.out.print("Input number: ");
         Scanner scanner = new Scanner(System.in);
 
-        int squareNumber = scanner.nextInt();
-        for (int i = 1; i <= squareNumber; i++) {
+        int diagonalNumber = scanner.nextInt();
 
-            for (int j = 1; j <= squareNumber; j++) {
-                if (i == 1 || i== squareNumber || j == 1 || j== squareNumber) {
+        for (int i = 1; i <= diagonalNumber; i++) {
+
+            for (int j = 1; j <= diagonalNumber; j++) {
+                if (i == 1 || i== diagonalNumber || j == 1 || j== diagonalNumber || i==j) {
                     System.out.print("%");
                 }
                 else {

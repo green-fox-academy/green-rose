@@ -26,5 +26,20 @@ public class DrawDiamond {
             }
             System.out.println();
         }
+
+        /*
+        Lukáš pyramid:
+        int total = 1;
+        int spot = total + total -1;
+        for (int i = 0; i < total ; i++) {
+            for (int j = 0; j < spot; j++) {
+                if (j <spot/2 -i || j > spot/2 +i){
+                    System.out.print(" ");
+                }
+                else System.out.print("*");
+
+            }
+            System.out.println();
+        }*/
     }
 }
