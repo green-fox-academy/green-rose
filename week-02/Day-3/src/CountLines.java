@@ -20,6 +20,7 @@ public class CountLines {
                 System.out.println(anotherScanner.nextLine());
                 lineCount++;
             }
+            anotherScanner.close();
 
         } catch (IOException ex){
             return 0;
