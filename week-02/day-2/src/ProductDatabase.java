@@ -37,7 +37,7 @@ public class ProductDatabase {
         System.out.println("Fish is "+products.get("Fish"));
         System.out.println("Most expensive product is "+mostExpensiveProduct);
         System.out.println("The average price is "+avgPrice);
-        System.out.println("Ther is "+countPriceBellow300+" product with price bellow 300");
+        System.out.println("There is "+countPriceBellow300+" product with price bellow 300");
         System.out.println(price125?"You can buy something for exactly 125.": "You can't buy a thing for 125.");
 
 
