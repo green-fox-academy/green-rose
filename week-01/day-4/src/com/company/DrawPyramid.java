@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class DrawPyramid {
     public static void main(String[] args) {
+    
         System.out.print("Input number: ");
         Scanner scanner = new Scanner(System.in);
         int triangleNumber = scanner.nextInt();
