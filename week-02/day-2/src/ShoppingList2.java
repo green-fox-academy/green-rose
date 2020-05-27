@@ -46,7 +46,7 @@ public class ShoppingList2 {
         for (Map.Entry<String,Map<String,Integer>> buyer: buyers.entrySet()) {
             double priceOfProducts=0.0;
             int numberOfProducts=0;
-            
+
             for (Map.Entry<String,Integer> item: buyer.getValue().entrySet()) {
                 priceOfProducts+= ((double) item.getValue() * prices.get(item.getKey()));
                 numberOfProducts+= item.getValue();

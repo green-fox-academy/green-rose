@@ -12,20 +12,24 @@ public class CountLines {
     private static int countTheLines (String filename){
         File file = new File(filename);
         Integer lineCount = 0;
-        if (file.exists()==false || file.canRead()==false) return 0;
+        if (!file.exists() || !file.canRead()) return lineCount;
+        Scanner anotherScanner=null;
         try {
 
-            Scanner anotherScanner = new Scanner(file);
+            anotherScanner = new Scanner(file);
             while (anotherScanner.hasNextLine()){
-                System.out.println(anotherScanner.nextLine());
+                anotherScanner.nextLine();
                 lineCount++;
             }
-            anotherScanner.close();
 
         } catch (IOException ex){
-            return 0;
+
         }
-        return lineCount;
+        finally {
+            anotherScanner.close();
+            return lineCount;
+        }
+       
     }
 
 }
