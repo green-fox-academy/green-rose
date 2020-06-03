@@ -1,3 +1,4 @@
+
 import java.awt.*;
 
 class PostIt {
@@ -20,9 +21,6 @@ public class PostItApp {
     postIt3.textColor=Color.green;
     postIt3.text="Superb!";
     postIt3.backgroundColor = Color.yellow;
-    Animal ani = new Animal();
-        System.out.println(ani.hunger);
-
 
     }
 
