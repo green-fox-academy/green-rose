@@ -6,6 +6,11 @@ public class Pirate {
     private boolean sleeping = false;
     private boolean died = false;
     public String name;
+
+    public void setParrot(boolean parrot) {
+        this.parrot = parrot;
+    }
+
     private boolean parrot = false;
 
     public Pirate(){
@@ -33,46 +38,49 @@ public class Pirate {
         if (this.sleeping) return this.parrotSays("I'am sleeping, wake me with rum!");
         if (this.died) return this.parrotSays("Ouch, I've died!");
         if (this.rumInBlood <5){
-            rumInBlood++;
+            this.rumInBlood++;
             return this.parrotSays("Pour me anudder!");
         } else{
             this.sleeping =true;
-            rumInBlood=0;
+            this.rumInBlood=0;
             return this.parrotSays("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
         }
     }
 
-    public void die(){
+    public String die(){
         this.died = true;
         this.sleeping =false;
         this.rumInBlood=0;
+        return (this.name+" died!");
     }
 
     public String brawl(Pirate other){
-        if(other.sleeping) return "Wake him first!";
-        if (this.sleeping) return "I'am sleeping, wake me with rum!";
+        if(other.sleeping) return this.parrotSays("Wake him first!");
+        if (this.sleeping) return this.parrotSays("I'am sleeping, wake me with rum!");
+        if(other.died) return this.parrotSays("No fight with dead pirate!");
+        if (this.died) return this.parrotSays("Cant fight being not alive!");
         switch ((int) (Math.random()*3)) {
             case 0:
                 this.died=true;
-                return "Ouch, I've died!";
+                return this.parrotSays("Ouch, I've died!");
 
             case 1:
                 other.died=true;
-                return "I've just kill that b'stard!";
+                return this.parrotSays("I've just kill that b'stard!");
 
             case 2:
             default:
                 other.sleeping=true;
                 this.sleeping=true;
-                return "Lets sleep together:-)";
+                return this.parrotSays("Lets sleep together:-)");
         }
     }
 
     @Override
     public String toString() {
         return this.name
-                + ((this.parrot)?" has parrot": " ")
-                + "Drunk(" + rumInBlood + ")"
+                + "(" + rumInBlood + ")"
+                + ((this.parrot)?" has parrot": "")
                 + ((this.sleeping) ? ", zzz... ":"")
                 + ((this.died) ? ", RIP":"");
     }
