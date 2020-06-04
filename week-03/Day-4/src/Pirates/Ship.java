@@ -17,7 +17,7 @@ public class Ship {
         for (int i = 0; i < (Math.random()*10)+5; i++) {
             crew.add(new Pirate());
         }
-        captain = new Pirate("Long John Silver");
+
     }
     public Ship(String shipName){
         this.shipName=shipName;
@@ -73,37 +73,6 @@ public class Ship {
             otherShip.battleWon();
             return false;
         }
-    }
-
-    public static void main(String[] args) {
-
-        Ship black = new Ship("Black Pearl");
-        black.setCaptain(new Pirate("John Long Silver"));
-        black.fillShip();
-        Ship white = new Ship("White Pearl");
-        black.setCaptain(new Pirate("Jack One Eye"));
-        black.fillShip();
-
-        black.crew.get(0).drinkSomeRum();
-        black.crew.get(0).drinkSomeRum();
-        black.crew.get(0).drinkSomeRum();
-        System.out.println(black.crew.get(0).howsItGoingMate());
-        black.crew.get(0).drinkSomeRum();
-        black.crew.get(0).setParrot(true);
-        black.crew.get(0).drinkSomeRum();
-        System.out.println(black.crew.get(0).howsItGoingMate());
-        System.out.println(black.crew.get(0).howsItGoingMate());
-        System.out.println(black.crew.get(1).die());
-        System.out.println(black.crew.get(1).brawl(black.crew.get(3)));
-        black.crew.get(2).setParrot(true);
-        System.out.println(black.crew.get(2).brawl(black.crew.get(3)));
-        black.captain.drinkSomeRum();
-        System.out.println(black);
-
-        if (black.battle(white)) System.out.println("Blacks!!!");
-        else System.out.println("Whites!!!");
-        System.out.println(black);
-        System.out.println(white);
     }
 
 
