@@ -2,9 +2,14 @@ package Pirates;
 
 public class Pirate {
     static Integer noPirate =0;
+
+    public int getRumInBlood() {
+        return rumInBlood;
+    }
+
     private int rumInBlood = 0;
-    private boolean sleeping = false;
-    private boolean died = false;
+    public boolean sleeping = false;
+    public boolean died = false;
     public String name;
 
     public void setParrot(boolean parrot) {
