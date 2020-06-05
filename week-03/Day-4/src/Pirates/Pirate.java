@@ -27,66 +27,98 @@ public class Pirate {
         this.name=name;
     }
 
-    private String parrotSays(String answer){
-        if (this.parrot) return answer+" "+answer;
-        else return answer;
+    private void parrotSays(String answer){
+        if (this.parrot) System.out.println(answer+" "+answer);
+        else System.out.println(answer+" "+answer);
+        return;
     }
 
-    public String drinkSomeRum(){
-        if (this.sleeping) return this.parrotSays("I'am sleeping, wake me with rum!");
-        if (this.died) return this.parrotSays("Ouch, I've died!");
+    public void  drinkSomeRum(){
+        if (this.sleeping) {
+            this.parrotSays("I'am sleeping, wake me with rum!");
+            return;
+        }
+        if (this.died) {
+            this.parrotSays("Ouch, I've died!");
+            return;
+        }
         this.rumInBlood++;
-        return this.parrotSays("Thanks.");
+        this.parrotSays("Thanks.");
+        return ;
     }
 
-    public String howsItGoingMate(){
-        if (this.sleeping) return this.parrotSays("I'am sleeping, wake me with rum!");
-        if (this.died) return this.parrotSays("Ouch, I've died!");
+    public void howsItGoingMate(){
+        if (this.sleeping) {
+            this.parrotSays("I'am sleeping, wake me with rum!");
+            return;
+        }
+        if (this.died) {
+            this.parrotSays("Ouch, I've died!");
+            return;
+        }
         if (this.rumInBlood <5){
             this.rumInBlood++;
-            return this.parrotSays("Pour me anudder!");
+            this.parrotSays("Pour me anudder!");
         } else{
             this.sleeping =true;
             this.rumInBlood=0;
-            return this.parrotSays("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
+            this.parrotSays("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
         }
+        return;
     }
 
-    public String die(){
+    public void die(){
         this.died = true;
         this.sleeping =false;
         this.rumInBlood=0;
-        return (this.name+" died!");
+        this.parrotSays(this.name+" died!");
+        return;
     }
 
-    public String brawl(Pirate other){
-        if(other.sleeping) return this.parrotSays("Wake him first!");
-        if (this.sleeping) return this.parrotSays("I'am sleeping, wake me with rum!");
-        if(other.died) return this.parrotSays("No fight with dead pirate!");
-        if (this.died) return this.parrotSays("Cant fight being not alive!");
+    public void brawl(Pirate other){
+        if (this.sleeping) {
+            this.parrotSays("I'am sleeping, wake me with rum!");
+            return;
+        }
+        if (this.died) {
+            this.parrotSays("Ouch, I've died!");
+            return;
+        }
+        if (other.sleeping) {
+            this.parrotSays("I'am sleeping, wake me with rum!");
+            return;
+        }
+        if (other.died) {
+            this.parrotSays("Ouch, I've died!");
+            return;
+        }
         switch ((int) (Math.random()*3)) {
             case 0:
                 this.died=true;
-                return this.parrotSays("Ouch, I've died!");
+                this.parrotSays("Ouch, I've died!");
+                return;
 
             case 1:
                 other.died=true;
-                return this.parrotSays("I've just kill that b'stard!");
+                this.parrotSays("I've just kill that b'stard!");
+                return;
 
             case 2:
             default:
                 other.sleeping=true;
                 this.sleeping=true;
-                return this.parrotSays("Lets sleep together:-)");
+                this.parrotSays("Lets sleep together:-)");
+                return;
         }
     }
 
     @Override
     public String toString() {
         return this.name
-                + "(" + rumInBlood + ")"
+                + "[(rums: " + rumInBlood + ")"
                 + ((this.parrot)?" has parrot": "")
                 + ((this.sleeping) ? ", zzz... ":"")
-                + ((this.died) ? ", RIP":"");
+                + ((this.died) ? ", RIP":"")
+                +"] ";
     }
 }
