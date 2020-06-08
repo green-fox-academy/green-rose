@@ -2,34 +2,37 @@ package Pirates;
 
 public class Pirate {
     static Integer noPirate =0;
+    private int rumInBlood = 0;
+    public boolean sleeping = false;
+    public boolean died = false;
+    public String name;
+    private boolean parrot = false;
 
     public int getRumInBlood() {
         return rumInBlood;
     }
 
-    private int rumInBlood = 0;
-    public boolean sleeping = false;
-    public boolean died = false;
-    public String name;
-
     public void setParrot(boolean parrot) {
         this.parrot = parrot;
     }
 
-    private boolean parrot = false;
-
     public Pirate(){
         noPirate++;
         this.name = "Pirate"+noPirate;
+        this.parrot = Math.random()*5<1 ? true:false;
+        if (Math.random()*5<1) this.sleeping=true;
+        else this.rumInBlood = (int)Math.round(Math.random()*5);
     }
 
     public Pirate(String name){
         this.name=name;
+        this.rumInBlood = (int)Math.round(Math.random()*5);
+        this.parrot = Math.random()*5<1 ? true:false;
     }
 
     private void parrotSays(String answer){
         if (this.parrot) System.out.println(answer+" "+answer);
-        else System.out.println(answer+" "+answer);
+        else System.out.println(answer);
         return;
     }
 
