@@ -9,6 +9,7 @@ public class Ship {
     public Pirate captain;
     public List<Pirate> crew = new ArrayList<>();
 
+
     public Ship(String shipName){
         this.shipName=shipName;
     }
@@ -18,10 +19,9 @@ public class Ship {
     }
 
     public void fillShip(){
-        for (int i = 0; i < (Math.random()*10)+5; i++) {
+        for (int i = 0; i < (Math.random()*5)+10; i++) {
             crew.add(new Pirate());
         }
-
     }
 
     private int getNumberOfPirates() {
@@ -44,11 +44,13 @@ public class Ship {
     }
 
     public void battleWon(){
+        System.out.println(this.shipName+" won this round!");
         for (int i = 0; i < (int) Math.round(Math.random()*5); i++) {
             this.captain.drinkSomeRum();
         }
         for (Pirate pirate: this.crew) {
             for (int i = 0; i < (int) Math.round(Math.random()*5); i++) {
+                System.out.print(pirate.name+": ");
                 pirate.drinkSomeRum();
             }
         }
