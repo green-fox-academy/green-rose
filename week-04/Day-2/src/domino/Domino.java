@@ -33,8 +33,8 @@ public class Domino implements Comparable<Domino>{
 
       if (this.getLeftSide()>d.getLeftSide()) return 1;
       if (this.getLeftSide()<d.getLeftSide()) return -1;
-      if(this.getRightSide()>d.getRightSide()) return 1;
-      if(this.getRightSide()<d.getRightSide()) return -1;
+      if (this.getRightSide()>d.getRightSide()) return 1;
+      if (this.getRightSide()<d.getRightSide()) return -1;
       return 0;
     }
 

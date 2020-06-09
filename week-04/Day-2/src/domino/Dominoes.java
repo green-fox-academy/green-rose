@@ -1,6 +1,7 @@
 package domino;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Dominoes {
@@ -11,11 +12,14 @@ public class Dominoes {
         // eg: [2, 4], [4, 3], [3, 5] ...
 
         System.out.println(dominoes);
+        Collections.sort(dominoes);
+        System.out.println(dominoes);
         List<Domino> sortedDomino = new ArrayList<>();
         boolean answer = sortDomino(sortedDomino,dominoes);
 
-        System.out.println(answer);
+        System.out.println("Chain?: "+ answer);
         System.out.println(sortedDomino);
+
     }
 
     public static boolean sortDomino(List<Domino> sortedDomino, List<Domino> dominoes) {
