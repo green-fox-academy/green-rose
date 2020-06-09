@@ -27,6 +27,8 @@ public class Dominoes {
         for (int i = 0; i < dominoes.size(); i++) {
             Domino domino = dominoes.get(i);
 
+
+
                 if (sortedDomino.isEmpty() ||
                         domino.getLeftSide() == sortedDomino.get(sortedDomino.size()-1).getRightSide()) {
                     sortedDomino.add(domino);
@@ -37,21 +39,32 @@ public class Dominoes {
                     }
 
                 }
+
             // ToDo: add swap logic!
+            else {domino.swap();
 
+            if (sortedDomino.isEmpty() ||
+                    domino.getLeftSide() == sortedDomino.get(sortedDomino.size()-1).getRightSide()) {
+                sortedDomino.add(domino);
+                dominoes.remove(domino);
+                if (!sortDomino(sortedDomino, dominoes)) {
+                    dominoes.add(i,domino);
+                    sortedDomino.remove(domino);
+                }
 
+            }}
         }
         return (dominoes.size()==0);
     }
 
     static List<Domino> initializeDominoes() {
         List<Domino> dominoes = new ArrayList<>();
-        dominoes.add(new Domino(5, 2));
+        dominoes.add(new Domino(2, 5));
         dominoes.add(new Domino(4, 6));
         dominoes.add(new Domino(1, 5));
         dominoes.add(new Domino(6, 7));
-        dominoes.add(new Domino(2, 4));
-        dominoes.add(new Domino(3, 1));
+        dominoes.add(new Domino(2, 5));
+        dominoes.add(new Domino(1, 7));
         return dominoes;
     }
 }
