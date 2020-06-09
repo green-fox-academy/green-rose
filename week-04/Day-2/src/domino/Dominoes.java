@@ -28,7 +28,7 @@ public class Dominoes {
                     sortedDomino.add(domino);
                     dominoes.remove(domino);
                     if (!sortDomino(sortedDomino, dominoes)) {
-                        dominoes.add(domino);
+                        dominoes.add(i,domino);
                         sortedDomino.remove(domino);
                     }
 
