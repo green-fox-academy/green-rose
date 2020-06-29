@@ -23,5 +23,13 @@ public class Streams {
         //Exercise6
         String string = "Vole,Žába";
         string.chars().mapToObj(c -> (char) c).filter(c->Character.isUpperCase(c)).forEach(System.out::println);
+        //Exercise7
+        List<String> cities = Arrays.asList("ROME", "LONDON", "NAIROBI", "CALIFORNIA", "ZURICH", "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS");
+        char par ='A';
+        cities.stream().filter(s->s.charAt(0)==par).forEach(System.out::println);
+        //Exercise8
+        List<Character> chars = Arrays.asList('a','c','d','e','f');
+        String s ="";
+        s+=chars.stream().forEach(c->c);
     }
 }
