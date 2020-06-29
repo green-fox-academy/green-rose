@@ -37,9 +37,7 @@ public class Dominoes {
                         sortedDomino.remove(domino);
                     }
                     j++;
-
                 } else if (j==0) domino.swap();
-
             }
         }
         return (dominoes.size()==0);
