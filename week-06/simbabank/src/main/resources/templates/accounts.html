@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Account from Simba's bank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<table class="table table-hover">
+    <thead>
+        <th>#</th>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>animal Type</th>
+    </thead>
+    <tr th:each="account : ${lionBank}" >
+        <td th:text="${accountStat.index}"></td>
+        <td th:text="${account.name}"></td>
+        <td><span th:text="${#numbers.formatDecimal(account.balance, 0, 'WHITESPACE', 2, 'POINT')}">10.00</span> Zebra</td>
+        <td th:text="${account.animalType}"></td>
+    </tr>
+</table>
+<table></table>
+</body>
+</html>
