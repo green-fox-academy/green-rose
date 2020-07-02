@@ -49,6 +49,26 @@ public class Streams {
             e.printStackTrace();
             System.out.println("no file");
         }
+        //Exercise11
+        try {
+            System.out.println(Files.lines(Paths.get("swcharacters.csv"))
+                .skip(1)
+                .map(line -> line.replace(",","."))
+                .map(line -> Arrays.asList(line.split(";")))
+                .filter(line->{
+                    try {
+                        Integer.parseInt(line.get(2));
+                        return true;
+                    }
+                    catch (NumberFormatException e) {
+                        return false;
+                    }
+                }).max((line1, line2)->(Integer.parseInt(line1.get(2))-Integer.parseInt(line2.get(2)))));
+              ;
 
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("no file");
+        }
     }
 }
