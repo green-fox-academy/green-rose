@@ -33,6 +33,13 @@ public class MainController {
         return "webshop";
     }
 
+    @GetMapping(value = "/contains_nike" )
+    public String nike(Model m){
+
+        m.addAttribute("shop",shop.getNike());
+        return "webshop";
+    }
+
     @PostMapping("/search_result")
     public String searchItem(@RequestParam String search, Model m){
         m.addAttribute("shop",shop.getSearchedText(search));

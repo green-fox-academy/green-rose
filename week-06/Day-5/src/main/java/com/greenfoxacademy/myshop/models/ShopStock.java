@@ -1,5 +1,7 @@
 package com.greenfoxacademy.myshop.models;
 
+import org.thymeleaf.util.ListUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,7 +35,15 @@ public class ShopStock {
     }
 
     public List<ShopItem>  getSearchedText(String searchedText) {
-      return this.stockList.stream().filter(item -> searchedText.toLowerCase().equals(item.getName().toLowerCase())).collect(Collectors.toList());
+        return this.stockList.stream()
+                .filter(item -> item.getDescription().toLowerCase().contains(searchedText.toLowerCase())||item.getName().toLowerCase().contains(searchedText.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    public List<ShopItem>  getNike() {
+        return this.stockList.stream()
+                .filter(item -> item.getDescription().toLowerCase().contains("nike")|| item.getName().toLowerCase().contains("nike"))
+                .collect(Collectors.toList());
     }
 
     public List<ShopItem> getOrderPrice() {
