@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>My Shop</h1>
+        <hr>
+        <nav>
+            <a href="/only_available/">only available</a>
+            <a href="/cheapest_first/">cheapest first</a>
+            <a href="/contains_nike/">contains nike</a>
+            <a href="/average_stock/">average stock</a>
+            <a href="/most_expensive_available/">most expensive available</a>
+        </nav>
+        <div class="search-container">
+            <form action="/search_result.php" name="searchForm">
+                <label for="search">Search for:</label>
+                <div class="search-container">
+                    <input type="text" placeholder="...something like nike" name="search" id="searchInput">
+                    <button type="submit" id="searchBtn">Search</button>
+                </div>
+            </form>
+        </div>
+    </header>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity of stock</th>
+        </tr>
+        <tr>
+            <td>Running shoes</td>
+            <td>Nike running shoes for every day sport</td>
+            <td>1000.0 Kč</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Printer</td>
+            <td>Some HP printer that will print pages</td>
+            <td>3000.0 Kč</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Coca cola</td>
+            <td>0.5l standard coke</td>
+            <td>25.0 Kč</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>Wokin</td>
+            <td>Chicken with fried rice and WOKIN sauce</td>
+            <td>119.0 Kč</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>T-shirt</td>
+            <td>Blue with a corgi on a bike</td>
+            <td>300.0 Kč</td>
+            <td>1</td>
+        </tr>
+    </table>
+</body>
+</html>

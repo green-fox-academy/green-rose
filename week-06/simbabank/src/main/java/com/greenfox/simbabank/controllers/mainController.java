@@ -28,7 +28,7 @@ public class mainController {
       BankAccounts lionBank = new BankAccounts();
       lionBank.getBankAccountList().add(new BankAccount("Timon",1000,"meerkat"));
       lionBank.getBankAccountList().add(new BankAccount("Pumbaa",1000,"warthog"));
-      lionBank.getBankAccountList().add(new BankAccount("Scar",1000,"lion"));
+      lionBank.getBankAccountList().add(new BankAccount("Scar",1000,"lion", true));
 
       m.addAttribute("lionBank", lionBank.getBankAccountList());
       return "accounts";
