@@ -35,4 +35,8 @@ public class ShopStock {
     public List<ShopItem>  getSearchedText(String searchedText) {
       return this.stockList.stream().filter(item -> searchedText.toLowerCase().equals(item.getName().toLowerCase())).collect(Collectors.toList());
     }
+
+    public List<ShopItem> getOrderPrice() {
+        return  this.stockList.stream().sorted().collect(Collectors.toList());
+    }
 }

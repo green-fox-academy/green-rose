@@ -26,6 +26,13 @@ public class MainController {
         return "webshop";
     }
 
+    @GetMapping(value = "/cheapest_first" )
+    public String ordered(Model m){
+
+        m.addAttribute("shop",shop.getOrderPrice());
+        return "webshop";
+    }
+
     @PostMapping("/search_result")
     public String searchItem(@RequestParam String search, Model m){
         m.addAttribute("shop",shop.getSearchedText(search));
