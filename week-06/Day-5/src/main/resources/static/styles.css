@@ -1,6 +1,9 @@
 body {
     font-family: 'Josefin Sans', sans-serif;
+}
+.content{
     max-width: 720px;
+    margin: auto;
 }
 
 button,

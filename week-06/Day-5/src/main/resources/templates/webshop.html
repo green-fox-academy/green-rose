@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Shop</title>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
+<div class="content">
+
     <header>
         <h1>My Shop</h1>
         <hr>
@@ -18,53 +23,30 @@
             <a href="/average_stock/">average stock</a>
             <a href="/most_expensive_available/">most expensive available</a>
         </nav>
-        <div class="search-container">
-            <form action="/search_result.php" name="searchForm">
-                <label for="search">Search for:</label>
-                <div class="search-container">
-                    <input type="text" placeholder="...something like nike" name="search" id="searchInput">
-                    <button type="submit" id="searchBtn">Search</button>
-                </div>
-            </form>
-        </div>
     </header>
-    <table>
-        <tr>
+    <div class="search-container">
+        <form action="/search_result.php" name="searchForm">
+            <label for="search-container">Search for:</label>
+            <div class="search-container" id="search-container">
+                <input type="text" placeholder="...something like nike" name="search" id="searchInput">
+                <button type="submit" id="searchBtn">Search</button>
+            </div>
+        </form>
+    </div>
+    <table class="table table-hover">
+        <thead>
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
             <th>Quantity of stock</th>
-        </tr>
-        <tr>
-            <td>Running shoes</td>
-            <td>Nike running shoes for every day sport</td>
-            <td>1000.0 Kč</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>Printer</td>
-            <td>Some HP printer that will print pages</td>
-            <td>3000.0 Kč</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>Coca cola</td>
-            <td>0.5l standard coke</td>
-            <td>25.0 Kč</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>Wokin</td>
-            <td>Chicken with fried rice and WOKIN sauce</td>
-            <td>119.0 Kč</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td>T-shirt</td>
-            <td>Blue with a corgi on a bike</td>
-            <td>300.0 Kč</td>
-            <td>1</td>
+        </thead>
+        <tr th:each="item : ${shop}" th:classappend="${item.stock}<=0 ? 'table-warning' : ''" >
+            <td th:text="${item.name}"></td>
+            <td><span th:text="${item.description}"></span></td>
+            <td><span th:text="${#numbers.formatDecimal(item.price, 0, 'WHITESPACE', 2, 'POINT')}">0.00</span> Kč</td>
+            <td th:text="${item.stock}"></td>
         </tr>
     </table>
+</div>
 </body>
 </html>
