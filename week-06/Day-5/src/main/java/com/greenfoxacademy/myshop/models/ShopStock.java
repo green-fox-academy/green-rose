@@ -1,7 +1,5 @@
 package com.greenfoxacademy.myshop.models;
 
-import org.thymeleaf.util.ListUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,6 +45,13 @@ public class ShopStock {
     }
 
     public List<ShopItem> getOrderPrice() {
-        return  this.stockList.stream().sorted().collect(Collectors.toList());
+        return this.stockList.stream().sorted().collect(Collectors.toList());
+    }
+
+    public double getAvgStock(){
+        return this.stockList.stream()
+                .mapToDouble(ShopItem::getPrice)
+                .average()
+                .orElse(0);
     }
 }

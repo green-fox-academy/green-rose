@@ -33,6 +33,13 @@ public class MainController {
         return "webshop";
     }
 
+    @GetMapping(value = "/average_stock" )
+    public String getAvgStock(Model m){
+        m.addAttribute("shop",shop.getStockList());
+        m.addAttribute("avgShop",shop.getAvgStock());
+        return "webshop";
+    }
+
     @GetMapping(value = "/contains_nike" )
     public String nike(Model m){
 
