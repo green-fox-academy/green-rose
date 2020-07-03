@@ -2,7 +2,7 @@ package com.greenfoxacademy.myshop.models;
 
 public class ShopItem {
 
-    private String name;
+    public String name;
     private double price;
     private String description;
     private int stock;

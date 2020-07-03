@@ -2,6 +2,7 @@ package com.greenfoxacademy.myshop.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShopStock {
     private List<ShopItem> stockList;
@@ -25,5 +26,13 @@ public class ShopStock {
 
     public void setStockList(List<ShopItem> stockList) {
         this.stockList = stockList;
+    }
+
+    public List<ShopItem> getAvailableStock() {
+        return  this.stockList.stream().filter(item->item.getStock()>0).collect(Collectors.toList());
+    }
+
+    public List<ShopItem>  getSearchedText(String searchedText) {
+      return this.stockList.stream().filter(item -> searchedText.toLowerCase().equals(item.getName().toLowerCase())).collect(Collectors.toList());
     }
 }
