@@ -3,7 +3,6 @@ package com.greenfoxacademy.myshop.models;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ShopStock {
@@ -14,11 +13,11 @@ public class ShopStock {
     public ShopStock(boolean demo){
         this();
         if (demo){
-            this.stockList.add(new ShopItem("Running shoes","Nike running shoes for every day sport",1000,5));
-            this.stockList.add(new ShopItem("Printer","Some HP printer that will print pages",3000,2));
-            this.stockList.add(new ShopItem("Coca cola","0.5l standard coke",25,0));
-            this.stockList.add(new ShopItem("Wokin","Chicken with fried rice and WOKIN sauce",119,100));
-            this.stockList.add(new ShopItem("T-shirt","Blue with a corgi on a bike",300,1));
+            this.stockList.add(new ShopItem("Running shoes","Nike running shoes for every day sport",1000,5,ItemType.clothesAndShoes));
+            this.stockList.add(new ShopItem("Printer","Some HP printer that will print pages",3000,2,ItemType.electronics));
+            this.stockList.add(new ShopItem("Coca cola","0.5l standard coke",25,0,ItemType.beveragesAndSnacks));
+            this.stockList.add(new ShopItem("Wokin","Chicken with fried rice and WOKIN sauce",119,100,ItemType.beveragesAndSnacks));
+            this.stockList.add(new ShopItem("T-shirt","Blue with a corgi on a bike",300,1,ItemType.clothesAndShoes));
         }
     }
 
@@ -60,5 +59,9 @@ public class ShopStock {
     public ShopItem getMostExpensive(){
         return this.stockList.stream()
                 .max(Comparator.comparing(ShopItem::getPrice)).orElse(null);
+    }
+
+    public List<ShopItem> getType(ItemType type) {
+        return this.stockList.stream().filter(t->t.getType()==type).collect(Collectors.toList());
     }
 }

@@ -5,6 +5,7 @@ public class ShopItem implements Comparable<ShopItem>{
     public String name;
     private double price;
     private String description;
+    private ItemType type;
     private int stock;
 
     public ShopItem(String name){
@@ -12,13 +13,19 @@ public class ShopItem implements Comparable<ShopItem>{
         this.description ="";
         this.price=0;
         this.stock=0;
+        this.type=ItemType.undefined;
     }
 
-    public ShopItem(String name, String description, double price, int stock){
+    public ShopItem(String name, String description, double price, int stock, ItemType type){
         this.name = name;
         this.description = description;
         this.price=price;
         this.stock= stock;
+        this.type=type;
+    }
+
+    public String getTypeLabel() {
+        return type.label;
     }
 
     public String getName() {
@@ -56,5 +63,9 @@ public class ShopItem implements Comparable<ShopItem>{
     @Override
     public int compareTo(ShopItem s) {
         return (getPrice()-s.getPrice()<0)?-1:1;
+    }
+
+    public ItemType getType() {
+        return type;
     }
 }

@@ -16,11 +16,11 @@
         <h1><a href="/webshop" >My Shop</a><a href="/more-filters" class="float-right">More >></a></h1>
         <hr>
         <nav>
-            <a href="/only_available/" >only available</a>
-            <a href="/cheapest_first/">cheapest first</a>
-            <a href="/contains_nike/">contains nike</a>
-            <a href="/average_stock/">average stock</a>
-            <a href="/most_expensive_available/">most expensive available</a>
+            <a href="/filter-by-type?type=clothesAndShoes" >clothes and shoes</a>
+            <a href="/filter-by-type?type=electronics">electronics</a>
+            <a href="/filter-by-type?type=beveragesAndSnacks">beverages and snacks</a>
+            <a href="/average_stock/">euro</a>
+            <a href="/most_expensive_available/">original currency</a>
         </nav>
     </header>
     <div class="search-container">
@@ -32,7 +32,9 @@
             </div>
         </form>
     </div>
-    <h2 th:if="${avgShop}" th:text="'Average stock: '+${avgShop}"></h2>
+    <div th:text = "${type}">
+
+    </div>
     <table th:if="${not #lists.isEmpty(shop)}" class="table table-hover">
         <thead>
             <th>Name</th>

@@ -1,12 +1,15 @@
 package com.greenfoxacademy.myshop.controllers;
 
+import com.greenfoxacademy.myshop.models.ItemType;
+
 import com.greenfoxacademy.myshop.models.ShopStock;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
-import java.util.Map;
+
 
 @Controller
 public class MainController {
@@ -16,6 +19,12 @@ public class MainController {
 
         m.addAttribute("shop",shop.getStockList());
         return "webshop";
+    }
+    @GetMapping(value = {"/", "/more-filters"})
+    public String more(Model m){
+
+        m.addAttribute("shop",shop.getStockList());
+        return "more-filters";
     }
 
     @GetMapping(value = "/only_available" )
@@ -58,4 +67,10 @@ public class MainController {
         return "webshop";
     }
 
+    @GetMapping("/filter-by-type")
+    public String getType(@RequestParam ("type") String type, Model m){
+        m.addAttribute("shop", shop.getType(ItemType.valueOf(type)));
+        //m.addAttribute("shop", Arrays.asList(shop.getMostExpensive()));
+        return "more-filters";
+    }
 }

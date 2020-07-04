@@ -6,21 +6,25 @@ body {
     margin: auto;
 }
 
-a > h1 {
-    font-size: 3em;
-    color: rgb(71,176,203);
-    margin-bottom: 0;
+h1{
     margin-top: 20px;
+    margin-bottom: 0;
 }
-a > h1:hover {
+h1 > a{
+    font-size: 1.2em;
+    color:  rgb(85,189,213);
+}
+h1 > a:hover {
+    color:  rgb(85,189,213);
     text-decoration: underline;
-    text-decoration-color:  rgb(71,176,203);
-    -moz-text-decoration-color:  rgb(71,176,203);
-    -webkit-text-decoration-color: rgb(71,176,203);
+    text-decoration-color:  rgb(85,189,213);
+    -moz-text-decoration-color:  rgb(85,189,213);
+    -webkit-text-decoration-color:  rgb(85,189,213);
 }
 
+
 hr {
-    border-top: 1px solid rgb(71,176,203);
+    border-top: 1px solid rgb(85,189,213);
     margin-top: 0;
 }
 nav {
@@ -29,13 +33,17 @@ nav {
     font-size: 0.8em;
     text-transform: uppercase;
     font-weight: 300;
+    display: flex;
+
 }
 nav > a {
     color: white;
-    background-color: rgb(224, 35, 35);
+    background-color: rgb(225, 40, 39);
     padding: 5px;
     border-radius: 5px;
     text-decoration: none;
+    flex-grow: 1;
+    margin: 2px;
 }
 
 nav > a:hover {
@@ -46,7 +54,7 @@ nav > a:hover {
 
 label{
     display: block;
-    color: rgb(224, 35, 35);
+    color: rgb(225, 40, 39);
     font-weight: 200;
 }
 .search-container{
@@ -54,7 +62,7 @@ label{
 }
 #searchInput{
     width: 80%;
-    border: 2px solid rgb(224, 35, 35);
+    border: 2px solid  rgb(225, 40, 39);
     border-radius: 5px;
     font-size: 1.5em;
     padding: 5px;
@@ -63,37 +71,43 @@ label{
 
 #searchBtn{
     border: unset;
-    width: 15%;
+    width: 19%;
     color: white;
-    background-color: rgb(224, 35, 35);
+    background-color: rgb(225, 40, 39);
     padding: 5px;
     margin: 0px;
     border-radius: 5px;
     font-size: 1.5em;
-    border: 2px solid rgb(224, 35, 35);
+    border: 2px solid  rgb(225, 40, 39);
     font-weight: 200;
 }
 table {
     width: 98%;
     margin-top: 20px;
 }
-tr > th {
-    background-color: rgb(97,237,250);
-    height: 50px;
+
+th {
+    background-color: rgb(112,239,251);
     width: 20%;
     font-size: 1.2em;
+    vertical-align: middle;
 }
 
-tr > th:nth-child(2) {
-    width: 40%;
-}
-
-tr > td:nth-child(3) {
-    font-size: 1.4em;
-    text-align: center;
+tr > th:nth-child(3) {
+    width: 30%;
 }
 
 tr > td:nth-child(4) {
     font-size: 1.4em;
+    text-align: center;
+}
+
+tr > td:nth-child(5) {
+    font-size: 1.4em;
+    text-align: center;
+}
+.table thead th {
+    vertical-align: middle;
+    border-right: 2px solid white;
     text-align: center;
 }
