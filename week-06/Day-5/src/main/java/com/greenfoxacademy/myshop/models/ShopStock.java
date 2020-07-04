@@ -1,7 +1,9 @@
 package com.greenfoxacademy.myshop.models;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ShopStock {
@@ -53,5 +55,10 @@ public class ShopStock {
                 .mapToDouble(ShopItem::getPrice)
                 .average()
                 .orElse(0);
+    }
+
+    public ShopItem getMostExpensive(){
+        return this.stockList.stream()
+                .max(Comparator.comparing(ShopItem::getPrice)).orElse(null);
     }
 }

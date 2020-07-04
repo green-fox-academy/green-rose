@@ -13,7 +13,7 @@
 <body>
 <div class="content">
     <header>
-        <h1>My Shop</h1>
+        <a href="/webshop" ><h1>My Shop</h1></a>
         <hr>
         <nav>
             <a href="/only_available/" >only available</a>
@@ -32,8 +32,8 @@
             </div>
         </form>
     </div>
-    <h2 th:text="'Average stock: '+${avgShop}"></h2>
-    <table class="table table-hover">
+    <h2 th:if="${avgShop}" th:text="'Average stock: '+${avgShop}"></h2>
+    <table th:if="${not #lists.isEmpty(shop)}" class="table table-hover">
         <thead>
             <th>Name</th>
             <th>Description</th>
