@@ -1,5 +1,6 @@
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -42,29 +43,60 @@ public class Streams {
         //Exercise10
         //Exercise11
         try {
-            Stream.of(Files.readString(Paths.get("text.txt")).split("\\W+")).map(word->new String(word))
+            Files.lines(Paths.get("text.txt")).flatMap(line->Arrays.stream(line.split("\\W+"))).map(word->new String(word))
                     .collect(Collectors.groupingBy(Function.identity(), Collectors.summingInt(c->1)))
                     .entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(100).forEach(System.out::println);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("no file");
         }
-        //Exercise11
+        //Exercise12
         try {
-            System.out.println(Files.lines(Paths.get("swcharacters.csv"))
-                .skip(1)
-                .map(line -> line.replace(",","."))
-                .map(line -> Arrays.asList(line.split(";")))
-                .filter(line->{
-                    try {
-                        Integer.parseInt(line.get(2));
-                        return true;
-                    }
-                    catch (NumberFormatException e) {
-                        return false;
-                    }
-                }).max((line1, line2)->(Integer.parseInt(line1.get(2))-Integer.parseInt(line2.get(2)))));
-              ;
+            Stream<List<String>> characters = Files.lines(Paths.get("swcharacters.csv"))
+                    .skip(1)
+                    .map(line -> line.replace(",","."))
+                    .map(line -> Arrays.asList(line.split(";")));
+
+            System.out.println(
+                    characters.filter(line->{
+                        try {
+                            Integer.parseInt(line.get(2));
+                            return true;
+                        }
+                        catch (NumberFormatException e) {
+                            return false;
+                        }
+                        }).max((line1, line2)->(Integer.parseInt(line1.get(2))-Integer.parseInt(line2.get(2)))));
+            Stream<List<String>> characters2 = Files.lines(Paths.get("swcharacters.csv"))
+                    .skip(1)
+                    .map(line -> line.replace(",","."))
+                    .map(line -> Arrays.asList(line.split(";")));
+
+            System.out.println(
+                characters2.filter(line->line.get(line.size()-1).equals("male"))
+                    .mapToInt(line->{
+                        try {
+                            return Integer.parseInt(line.get(2));
+                        }
+                        catch (NumberFormatException e) {
+                            return 0;
+                        }
+                    }).average().orElse(0));
+            Stream<List<String>> characters3 = Files.lines(Paths.get("swcharacters.csv"))
+                    .skip(1)
+                    .map(line -> line.replace(",","."))
+                    .map(line -> Arrays.asList(line.split(";")));
+
+            System.out.println(
+                characters3.filter(line->line.get(line.size()-1).equals("female"))
+                    .mapToInt(line->{
+                        try {
+                            return Integer.parseInt(line.get(2));
+                        }
+                        catch (NumberFormatException e) {
+                            return 0;
+                        }
+                    }).average().orElse(0));
 
         } catch (IOException e) {
             e.printStackTrace();
