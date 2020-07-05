@@ -1,5 +1,6 @@
 package com.greenfoxacademy.myshop.controllers;
 
+import com.greenfoxacademy.myshop.models.Currencies;
 import com.greenfoxacademy.myshop.models.ItemType;
 
 import com.greenfoxacademy.myshop.models.ShopStock;
@@ -9,20 +10,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.Map;
 
 
 @Controller
 public class MainController {
     ShopStock shop = new ShopStock(true);
+    private Currencies currencies = new Currencies();
+    private String actualCurrency = "Kč";
+
     @GetMapping(value = {"/", "/webshop"})
     public String show(Model m){
 
         m.addAttribute("shop",shop.getStockList());
         return "webshop";
     }
-    @GetMapping(value = {"/", "/more-filters"})
+    @GetMapping(value = {"/more-filters"})
     public String more(Model m){
-
+        m.addAttribute("currency",this.actualCurrency);
+        m.addAttribute("course", this.currencies.getCourse(this.actualCurrency));
         m.addAttribute("shop",shop.getStockList());
         return "more-filters";
     }
@@ -69,8 +75,30 @@ public class MainController {
 
     @GetMapping("/filter-by-type")
     public String getType(@RequestParam ("type") String type, Model m){
+        m.addAttribute("currency",this.actualCurrency);
+        m.addAttribute("course", this.currencies.getCourse(this.actualCurrency));
         m.addAttribute("shop", shop.getType(ItemType.valueOf(type)));
-        //m.addAttribute("shop", Arrays.asList(shop.getMostExpensive()));
         return "more-filters";
     }
+
+    @GetMapping("/price-in-eur")
+    public String priceEUR(Model m){
+
+        this.actualCurrency="€";
+        m.addAttribute("currency",this.actualCurrency);
+        m.addAttribute("course", this.currencies.getCourse(this.actualCurrency));
+        m.addAttribute("shop", shop.getStockList());
+        return "more-filters";
+    }
+
+    @GetMapping("/price-in-original")
+    public String priceOrigin(Model m){
+
+        this.actualCurrency="Kč";
+        m.addAttribute("currency",this.actualCurrency);
+        m.addAttribute("course", this.currencies.getCourse(this.actualCurrency));
+        m.addAttribute("shop", shop.getStockList());
+        return "more-filters";
+    }
+
 }

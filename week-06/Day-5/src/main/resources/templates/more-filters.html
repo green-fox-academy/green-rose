@@ -19,8 +19,8 @@
             <a href="/filter-by-type?type=clothesAndShoes" >clothes and shoes</a>
             <a href="/filter-by-type?type=electronics">electronics</a>
             <a href="/filter-by-type?type=beveragesAndSnacks">beverages and snacks</a>
-            <a href="/average_stock/">euro</a>
-            <a href="/most_expensive_available/">original currency</a>
+            <a href="/price-in-eur">euro</a>
+            <a href="/price-in-original">original currency</a>
         </nav>
     </header>
     <div class="search-container">
@@ -31,9 +31,6 @@
                 <button type="submit" id="searchBtn">Search</button>
             </div>
         </form>
-    </div>
-    <div th:text = "${type}">
-
     </div>
     <table th:if="${not #lists.isEmpty(shop)}" class="table table-hover">
         <thead>
@@ -47,7 +44,7 @@
             <td th:text="${item.name}"></td>
             <td th:text="${item.typeLabel}"></td>
             <td><span th:text="${item.description}"></span></td>
-            <td><span th:text="${#numbers.formatDecimal(item.price, 0, 'WHITESPACE', 2, 'POINT')}">0.00</span> Kč</td>
+            <td><span th:text="${#numbers.formatDecimal(((currency != null) ? item.price/course : item.price), 0, 'WHITESPACE', 2, 'POINT')}">0.00</span> <span th:text="${currency != null} ? ${currency}">Kč</span></td>
             <td th:text="${item.stock}"></td>
         </tr>
     </table>
