@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>UU</title>
+</head>
+<body>
+<h1>Useful staff</h1>
+<p th:text="${email} + ((${isValid}) ? ' is valid':' is not valid') +' email address'" th:style="(${isValid}) ? 'color: green;' : 'color: red'"></p>
+
+</p>
+</body>
+</html>

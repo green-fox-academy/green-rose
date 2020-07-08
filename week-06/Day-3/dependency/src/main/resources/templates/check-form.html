@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>GFA</title>
+</head>
+<body>
+<h1>Add GFA Student</h1>
+<div th:if="${isStudent != null}">
+	<p th:text="(${isStudent})?'Is in list':'Not in list'"></p>
+	<a href="/gfa">
+		<button>Back</button>
+	</a>
+
+</div>
+<br>
+<form action="check" method="post">
+	<label for="name">Student's name:</label>
+	<input type="text" id="name" name="name">
+	<input type="submit" value="Check">
+</form>
+
+</body>
+</html>
