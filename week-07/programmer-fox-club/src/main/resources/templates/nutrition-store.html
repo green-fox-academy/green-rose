@@ -11,8 +11,8 @@
 <body>
 <div class="container">
 	<nav>
-		<a href="/" >information</a>
-		<a href="/login" >login</a>
+		<a th:href="@{/(name=${fox.getName()})}">information</a>
+		<a th:href="@{/login(name=${fox.getName()})}">login</a>
 	</nav>
 	<form action="nutrition-store" method="post" name="nutrition-form">
 		<input th:value="${fox.getId()}" name="foxId" type="hidden">
@@ -22,7 +22,7 @@
 		</select>
 		<label for="drink">Drink:</label>
 		<select name="drinkId" id="drink">
-			<option th:each="drink:${drinkList}" th:value="${drink.getId()}" th:text="${drink.getName()}"></option>
+			<option th:each="drink:${drinkList}" th:value="${drink.getId()}" th:text="${drink.getName()}" th:selected="${drink.getId()==fox.drink.getId()}"></option>
 		</select>
 		<input type="submit" value="Change">
 	</form>

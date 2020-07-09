@@ -27,7 +27,8 @@ public class FoxStaticRepository implements FoxRepository{
         trickList.add(new Trick("JavaScript"));
         drinkList.add(new Drink("milk"));
         foodList.add(new Food("baby food"));
-
+        drinkList.add(new Drink("beer"));
+        foodList.add(new Food("hamburger"));
         foxList.add(new Fox("Mr. GreenFox",  foodList.get(0), drinkList.get(0)));
         foxList.get(0).addTrick(trickList.get(0));
 
@@ -46,7 +47,7 @@ public class FoxStaticRepository implements FoxRepository{
 
     @Override
     public Fox findById(int id) {
-        return null;
+        return this.foxList.stream().filter(f->f.getId()==id).findFirst().orElse(null);
     }
 
     @Override
@@ -74,11 +75,13 @@ public class FoxStaticRepository implements FoxRepository{
 
     @Override
     public void changeFoxFood(int foxId, int foodId) {
-        this.foxList.get(foxId).setFood(foodList.get(foodId));
+        Fox fox = this.findById(foxId);
+        if(fox!=null) fox.setFood(foodList.stream().filter(f->f.getId()==foodId).findFirst().orElse(null));
     }
 
     @Override
     public void changeFoxDrink(int foxId, int drinkId) {
-        this.foxList.get(foxId).setDrink(drinkList.get(drinkId));
+        Fox fox = this.findById(foxId);
+        if(fox!=null) fox.setDrink(drinkList.stream().filter(f->f.getId()==drinkId).findFirst().orElse(null));
     }
 }

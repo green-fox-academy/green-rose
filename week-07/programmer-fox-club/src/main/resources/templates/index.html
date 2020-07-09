@@ -11,10 +11,9 @@
 <body>
 <div class="container">
 	<nav>
-		<a href="/login" >login</a>
-		<a href="/nutrition-store" >nutrition</a>
+		<a th:href="@{/login/(name=${fox.getName()})}">login</a>
+		<a th:href="@{/nutrition-store(name=${fox.getName()})}">nutrition</a>
 	</nav>
-	<p th:text="${foxList.size()}"></p>
 	<img src="greenfox.png" alt="green fox png" >
 	<div>
 		This is <span th:text="${fox.getName()}"></span>. Currently living on <span th:text="${fox.getFood().name}"></span> and <span th:text="${fox.getDrink().name}"></span>.<span th:unless="${fox.trickList.isEmpty()}"> It knows few tricks.</span>

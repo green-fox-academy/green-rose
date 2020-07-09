@@ -28,7 +28,7 @@ public class MainController {
             m.addAttribute("foxList",foxService.foxList());
             return "index";
         } else if (foxService.getFoxByName(name)==null){
-            return "redirect:login?name="+name;
+            return "redirect:/login?name="+name;
         } else {
             m.addAttribute("fox",foxService.getFoxByName(name));
             m.addAttribute("foxList",foxService.foxList());
@@ -54,10 +54,11 @@ public class MainController {
 
     @GetMapping(value = {"/nutrition-store"})
     public String nutrition(@RequestParam(required = false) String name, Model m){
+        System.out.println(name);
         if (name == null){ name = "Mr. GreenFox";}
 
         if (foxService.getFoxByName(name)==null){
-            return "redirect:login/?name="+name;
+            return "redirect:/login/?name="+name;
         } else {
             m.addAttribute("fox",foxService.getFoxByName(name));
             m.addAttribute("foodList", foxService.foodList());
