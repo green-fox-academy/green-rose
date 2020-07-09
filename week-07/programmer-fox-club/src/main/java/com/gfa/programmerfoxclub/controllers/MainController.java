@@ -1,5 +1,6 @@
 package com.gfa.programmerfoxclub.controllers;
 
+import com.gfa.programmerfoxclub.Fox;
 import com.gfa.programmerfoxclub.models.FoxService;
 
 import org.springframework.stereotype.Controller;
@@ -14,32 +15,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
 
     private final FoxService foxService;
+    private Fox currentFox;
 
     public MainController(FoxService foxService) {
         this.foxService = foxService;
+        this.currentFox = foxService.getFoxByName("Mr. GreenFox");
     }
 
 
     @GetMapping(value = {"/"})
-    public String show(@RequestParam(required = false) String name, Model m){
-        if (name == null){
-            m.addAttribute("fox",foxService.getFoxByName("Mr. GreenFox"));
+    public String show (Model m){
+            m.addAttribute("fox",currentFox);
             m.addAttribute("foxList",foxService.foxList());
             return "index";
-        } else if (foxService.getFoxByName(name)==null){
-            return "redirect:/login?name="+name;
-        } else {
-            m.addAttribute("fox",foxService.getFoxByName(name));
-            m.addAttribute("foxList",foxService.foxList());
-            return "index";
-        }
     }
 
     @GetMapping(value = {"/login"})
-    public String loginForm(@RequestParam(required = false) String name, Model m){
-        if (name != null){
-            m.addAttribute("name", name);
-        }
+    public String loginForm(Model m){
+            m.addAttribute("name", currentFox.getName());
         return "login";
     }
 
@@ -47,23 +40,19 @@ public class MainController {
     public String loginFormHandling(@RequestParam("name") String name, Model m){
         if (foxService.getFoxByName(name)==null){
             foxService.addFoxName(name);
+            currentFox=foxService.getFoxByName(name);
         }
-        return "redirect:/?name="+name;
+        return "redirect:/";
     }
 
     @GetMapping(value = {"/nutrition-store"})
-    public String nutrition(@RequestParam(required = false) String name, Model m){
-        System.out.println(name);
-        if (name == null){ name = "Mr. GreenFox";}
+    public String nutrition(Model m){
 
-        if (foxService.getFoxByName(name)==null){
-            return "redirect:/login?name="+name;
-        } else {
-            m.addAttribute("fox",foxService.getFoxByName(name));
+            m.addAttribute("fox",currentFox);
             m.addAttribute("foodList", foxService.foodList());
             m.addAttribute("drinkList", foxService.drinkList());
             return "nutrition-store";
-        }
+
     }
 
     @PostMapping(value = {"/nutrition-store"})
@@ -75,20 +64,14 @@ public class MainController {
             ){
     this.foxService.chaneFoxDrink(foxId,drinkId);
     this.foxService.chaneFoxFood(foxId,foodId);
-    return "redirect:/?name="+this.foxService.getFox(foxId).getName();
+    return "redirect:/";
     }
 
     @GetMapping(value = {"/trick-center"})
-    public String tricks(@RequestParam(required = false) String name, Model m){
-        if (name == null){ name = "Mr. GreenFox";}
-
-        if (foxService.getFoxByName(name)==null){
-            return "redirect:/login?name="+name;
-        } else {
-            m.addAttribute("fox",foxService.getFoxByName(name));
-            m.addAttribute("trickList", foxService.allowedTrickList(foxService.getFoxByName(name)));
+    public String tricks(Model m){
+            m.addAttribute("fox",currentFox);
+            m.addAttribute("trickList", foxService.allowedTrickList(currentFox));
             return "trick-center";
-        }
     }
 
     @PostMapping(value = {"/trick-center"})
@@ -98,6 +81,6 @@ public class MainController {
             Model m
     ){
         this.foxService.addTrick(foxId,trickId);
-        return "redirect:/?name="+this.foxService.getFox(foxId).getName();
+        return "redirect:/";
     }
 }
