@@ -2,6 +2,7 @@ package com.gfa.programmerfoxclub.models;
 import com.gfa.programmerfoxclub.Drink;
 import com.gfa.programmerfoxclub.Food;
 import com.gfa.programmerfoxclub.Fox;
+import com.gfa.programmerfoxclub.Trick;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,5 +50,22 @@ public class FoxServiceImpl implements FoxService{
     public void chaneFoxFood(int foxId, int foodId) {
         this.foxRepository.changeFoxFood(foxId,foodId);
     }
+
+    @Override
+    public List<Trick> trickList() {
+
+        return this.foxRepository.trickList();
+    }
+
+    @Override
+    public List<Trick> allowedTrickList(Fox fox) {
+        return this.foxRepository.allowedTrickList(fox);
+    }
+
+    @Override
+    public void addTrick(int foxId, int trickId) {
+        this.foxRepository.addTrick(foxId,trickId);
+    }
+
 
 }

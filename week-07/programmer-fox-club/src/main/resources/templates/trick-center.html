@@ -5,29 +5,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="/styles.css">
 	<title>Green Fox Programmer Club</title>
 </head>
 <body>
 <div class="container">
 	<nav>
-		<a th:href="@{/login/(name=${fox.getName()})}">login</a>
-		<a th:href="@{/nutrition-store(name=${fox.getName()})}">nutrition</a>
+		<a th:href="@{/(name=${fox.getName()})}">information</a>
+		<a th:href="@{/login(name=${fox.getName()})}">login</a>
 		<a th:href="@{/trick-center(name=${fox.getName()})}">trick center</a>
 	</nav>
-	<img src="greenfox.png" alt="green fox png" >
-	<div>
-		This is <span th:text="${fox.getName()}"></span>. Currently living on <span th:text="${fox.getFood().name}"></span> and <span th:text="${fox.getDrink().name}"></span>.<span th:unless="${fox.trickList.isEmpty()}"> It knows few tricks.</span>
-	</div>
-	<br>
-	<div id="known-tricks">
-		<h2>Known tricks</h2>
-		<p th:if="${fox.trickList.isEmpty()}">Does not know any of the tricks. Teach him!</p>
-		<ul th:each="trick: ${fox.trickList}">
-			<li th:text="${trick.name}"></li>
-		</ul>
-		</p>
-	</div>
+	<p th:if="${trickList.size()==0}">No tricks to learn!</p>
+	<form th:if="${trickList.size()>0}" action="trick-center" method="post" name="trick-form">
+		<input th:value="${fox.getId()}" name="foxId" type="hidden">
+		<label for="trick">Trick:</label>
+		<select name="trickId" id="trick">
+			<option th:each="trick:${trickList}" th:value="${trick.getId()}" th:text="${trick.getName()}"></option>
+		</select>
+		<input type="submit" value="Learn">
+	</form>
 </div>
 </body>
 </html>

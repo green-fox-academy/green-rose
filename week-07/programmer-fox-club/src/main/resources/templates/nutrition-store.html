@@ -13,6 +13,7 @@
 	<nav>
 		<a th:href="@{/(name=${fox.getName()})}">information</a>
 		<a th:href="@{/login(name=${fox.getName()})}">login</a>
+		<a th:href="@{/trick-center(name=${fox.getName()})}">trick center</a>
 	</nav>
 	<form action="nutrition-store" method="post" name="nutrition-form">
 		<input th:value="${fox.getId()}" name="foxId" type="hidden">

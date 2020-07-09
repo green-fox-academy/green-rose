@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
 
 @Controller
 public class MainController {
@@ -58,7 +57,7 @@ public class MainController {
         if (name == null){ name = "Mr. GreenFox";}
 
         if (foxService.getFoxByName(name)==null){
-            return "redirect:/login/?name="+name;
+            return "redirect:/login?name="+name;
         } else {
             m.addAttribute("fox",foxService.getFoxByName(name));
             m.addAttribute("foodList", foxService.foodList());
@@ -77,5 +76,28 @@ public class MainController {
     this.foxService.chaneFoxDrink(foxId,drinkId);
     this.foxService.chaneFoxFood(foxId,foodId);
     return "redirect:/?name="+this.foxService.getFox(foxId).getName();
+    }
+
+    @GetMapping(value = {"/trick-center"})
+    public String tricks(@RequestParam(required = false) String name, Model m){
+        if (name == null){ name = "Mr. GreenFox";}
+
+        if (foxService.getFoxByName(name)==null){
+            return "redirect:/login?name="+name;
+        } else {
+            m.addAttribute("fox",foxService.getFoxByName(name));
+            m.addAttribute("trickList", foxService.allowedTrickList(foxService.getFoxByName(name)));
+            return "trick-center";
+        }
+    }
+
+    @PostMapping(value = {"/trick-center"})
+    public String tricksHandled(
+            @RequestParam(name = "trickId") int trickId,
+            @RequestParam(name = "foxId") int foxId,
+            Model m
+    ){
+        this.foxService.addTrick(foxId,trickId);
+        return "redirect:/?name="+this.foxService.getFox(foxId).getName();
     }
 }

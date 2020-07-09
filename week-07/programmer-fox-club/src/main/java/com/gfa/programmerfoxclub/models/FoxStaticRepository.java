@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FoxStaticRepository implements FoxRepository{
@@ -83,5 +84,22 @@ public class FoxStaticRepository implements FoxRepository{
     public void changeFoxDrink(int foxId, int drinkId) {
         Fox fox = this.findById(foxId);
         if(fox!=null) fox.setDrink(drinkList.stream().filter(f->f.getId()==drinkId).findFirst().orElse(null));
+    }
+
+    @Override
+    public List<Trick> trickList() {
+        return this.trickList;
+    }
+
+    @Override
+    public List<Trick> allowedTrickList(Fox fox) {
+        return this.trickList.stream().filter(t->!fox.isTrickInList(t)).collect(Collectors.toList());
+    }
+
+    @Override
+    public void addTrick(int foxId, int trickId) {
+        Fox fox = this.findById(foxId);
+        Trick trick = this.trickList.stream().filter(t->t.getId()==trickId).findFirst().orElse(null);
+        if(fox!=null && trick!=null) fox.addTrick(trick);
     }
 }

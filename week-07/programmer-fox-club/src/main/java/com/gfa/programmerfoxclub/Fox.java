@@ -55,5 +55,9 @@ public class Fox {
     public void setDrink(Drink drink) {
         this.drink = drink;
     }
+
+    public boolean isTrickInList(Trick trick){
+        return this.trickList.contains(trick);
+    }
 }
 
