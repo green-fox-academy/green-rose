@@ -19,20 +19,19 @@ public class MainController {
 
     public MainController(FoxService foxService) {
         this.foxService = foxService;
-        this.currentFox = foxService.getFoxByName("Mr. GreenFox");
     }
 
 
     @GetMapping(value = {"/"})
     public String show (Model m){
-            m.addAttribute("fox",currentFox);
-            m.addAttribute("foxList",foxService.foxList());
-            return "index";
+        if (currentFox==null) return  "login";
+        m.addAttribute("fox",currentFox);
+        m.addAttribute("foxList",foxService.foxList());
+        return "index";
     }
 
     @GetMapping(value = {"/login"})
     public String loginForm(Model m){
-            m.addAttribute("name", currentFox.getName());
         return "login";
     }
 
@@ -47,11 +46,11 @@ public class MainController {
 
     @GetMapping(value = {"/nutrition-store"})
     public String nutrition(Model m){
-
-            m.addAttribute("fox",currentFox);
-            m.addAttribute("foodList", foxService.foodList());
-            m.addAttribute("drinkList", foxService.drinkList());
-            return "nutrition-store";
+        if (currentFox==null) return  "login";
+        m.addAttribute("fox",currentFox);
+        m.addAttribute("foodList", foxService.foodList());
+        m.addAttribute("drinkList", foxService.drinkList());
+        return "nutrition-store";
 
     }
 
@@ -62,16 +61,17 @@ public class MainController {
             @RequestParam(name = "foxId") int foxId,
             Model m
             ){
-    this.foxService.chaneFoxDrink(foxId,drinkId);
-    this.foxService.chaneFoxFood(foxId,foodId);
-    return "redirect:/";
+        this.foxService.chaneFoxDrink(foxId,drinkId);
+        this.foxService.chaneFoxFood(foxId,foodId);
+        return "redirect:/";
     }
 
     @GetMapping(value = {"/trick-center"})
     public String tricks(Model m){
-            m.addAttribute("fox",currentFox);
-            m.addAttribute("trickList", foxService.allowedTrickList(currentFox));
-            return "trick-center";
+        if (currentFox==null) return  "login";
+        m.addAttribute("fox",currentFox);
+        m.addAttribute("trickList", foxService.allowedTrickList(currentFox));
+        return "trick-center";
     }
 
     @PostMapping(value = {"/trick-center"})
