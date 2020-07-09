@@ -1,6 +1,9 @@
 package com.gfa.programmerfoxclub.controllers;
 
+import com.gfa.programmerfoxclub.Drink;
+import com.gfa.programmerfoxclub.Food;
 import com.gfa.programmerfoxclub.Fox;
+import com.gfa.programmerfoxclub.Trick;
 import com.gfa.programmerfoxclub.models.FoxService;
 
 import org.springframework.stereotype.Controller;
@@ -70,6 +73,22 @@ public class MainController {
         this.foxService.chaneFoxFood(foxId,foodId);
         return "redirect:/";
     }
+    @PostMapping(value = {"/nutrition-store-drink"})
+    public String drinkAdded(
+            @RequestParam(name = "drinkName") String drinkName,
+            Model m
+    ){
+        this.foxService.drinkList().add(new Drink(drinkName));
+        return "redirect:/";
+    }
+    @PostMapping(value = {"/nutrition-store-food"})
+    public String foodAdded(
+            @RequestParam(name = "foodName") String foodName,
+            Model m
+    ){
+        this.foxService.foodList().add(new Food(foodName));
+        return "redirect:/";
+    }
 
     @GetMapping(value = {"/trick-center"})
     public String tricks(Model m){
@@ -86,6 +105,14 @@ public class MainController {
             Model m
     ){
         this.foxService.addTrick(foxId,trickId);
+        return "redirect:/";
+    }
+    @PostMapping(value = {"/trick-center-add"})
+    public String tricksAddedHandled(
+            @RequestParam(name = "trickName") String trickName,
+            Model m
+    ){
+        this.foxService.trickList().add(new Trick(trickName));
         return "redirect:/";
     }
 }
