@@ -24,14 +24,19 @@ public class MainController {
 
     @GetMapping(value = {"/"})
     public String show (Model m){
-        if (currentFox==null) return  "login";
+        if (currentFox==null) return  "redirect:login";
         m.addAttribute("fox",currentFox);
         m.addAttribute("foxList",foxService.foxList());
         return "index";
     }
 
     @GetMapping(value = {"/login"})
-    public String loginForm(Model m){
+    public String loginForm(@RequestParam(required = false) String name,Model m){
+        if (name!=null && foxService.getFoxByName(name)!=null){
+            this.currentFox = foxService.getFoxByName(name);
+            return "redirect:/";
+        }
+        m.addAttribute("foxList",foxService.foxList());
         return "login";
     }
 
@@ -39,14 +44,14 @@ public class MainController {
     public String loginFormHandling(@RequestParam("name") String name, Model m){
         if (foxService.getFoxByName(name)==null){
             foxService.addFoxName(name);
-            currentFox=foxService.getFoxByName(name);
         }
+        currentFox=foxService.getFoxByName(name);
         return "redirect:/";
     }
 
     @GetMapping(value = {"/nutrition-store"})
     public String nutrition(Model m){
-        if (currentFox==null) return  "login";
+        if (currentFox==null) return  "redirect:login";
         m.addAttribute("fox",currentFox);
         m.addAttribute("foodList", foxService.foodList());
         m.addAttribute("drinkList", foxService.drinkList());
@@ -68,7 +73,7 @@ public class MainController {
 
     @GetMapping(value = {"/trick-center"})
     public String tricks(Model m){
-        if (currentFox==null) return  "login";
+        if (currentFox==null) return  "redirect:login";
         m.addAttribute("fox",currentFox);
         m.addAttribute("trickList", foxService.allowedTrickList(currentFox));
         return "trick-center";

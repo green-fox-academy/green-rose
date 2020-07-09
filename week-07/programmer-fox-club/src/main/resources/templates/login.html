@@ -20,6 +20,11 @@
 		<input type="text" name="name" id="name" required>
 		<input type="submit" value="Find or create!">
 	</form>
+	<div th:if="${!foxList.isEmpty()}">
+		<ul th:each="fox:${foxList}">
+			<li><a th:href="@{/login(name=${fox.getName()})}" th:text="${fox.getName()}"></a></li>
+		</ul>
+	</div>
 </div>
 </body>
 </html>
