@@ -1,4 +1,6 @@
 package com.gfa.programmerfoxclub.models;
+import com.gfa.programmerfoxclub.Drink;
+import com.gfa.programmerfoxclub.Food;
 import com.gfa.programmerfoxclub.Fox;
 import org.springframework.stereotype.Service;
 
@@ -14,23 +16,38 @@ public class FoxServiceImpl implements FoxService{
     }
 
     public List<Fox> foxList() {
-        return null;
+        return foxRepository.findAll();
     }
 
     public Fox getFox(int id) {
-        return null;
+        return foxRepository.findById(id);
     }
 
     public void addFoxName(String name) {
         foxRepository.add(name);
     }
 
-    public void addFox(Fox fox) {
-
-    }
 
     public Fox getFoxByName(String name) {
         return this.foxRepository.findByName(name);
+    }
+
+    public List<Food> foodList(){
+        return this.foxRepository.foodList();
+    }
+
+    public List<Drink> drinkList(){
+        return this.foxRepository.drinkList();
+    }
+
+    @Override
+    public void chaneFoxDrink(int foxId, int drinkId) {
+        this.foxRepository.changeFoxDrink(foxId,drinkId);
+    }
+
+    @Override
+    public void chaneFoxFood(int foxId, int foodId) {
+        this.foxRepository.changeFoxFood(foxId,foodId);
     }
 
 }

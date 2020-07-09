@@ -5,29 +5,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="/styles.css">
 	<title>Green Fox Programmer Club</title>
 </head>
 <body>
 <div class="container">
 	<nav>
+		<a href="/" >information</a>
 		<a href="/login" >login</a>
-		<a href="/nutrition-store" >nutrition</a>
 	</nav>
-	<p th:text="${foxList.size()}"></p>
-	<img src="greenfox.png" alt="green fox png" >
-	<div>
-		This is <span th:text="${fox.getName()}"></span>. Currently living on <span th:text="${fox.getFood().name}"></span> and <span th:text="${fox.getDrink().name}"></span>.<span th:unless="${fox.trickList.isEmpty()}"> It knows few tricks.</span>
-	</div>
-	<br>
-	<div id="known-tricks">
-		<h2>Known tricks</h2>
-		<p th:if="${fox.trickList.isEmpty()}">Does not know any of the tricks. Teach him!</p>
-		<ul th:each="trick: ${fox.trickList}">
-			<li th:text="${trick.name}"></li>
-		</ul>
-		</p>
-	</div>
+	<form action="nutrition-store" method="post" name="nutrition-form">
+		<input th:value="${fox.getId()}" name="foxId" type="hidden">
+		<label for="food">Food:</label>
+		<select name="foodId" id="food">
+			<option th:each="food:${foodList}" th:value="${food.getId()}" th:text="${food.getName()}"  th:selected="${food.getId()==fox.food.getId()}"></option>
+		</select>
+		<label for="drink">Drink:</label>
+		<select name="drinkId" id="drink">
+			<option th:each="drink:${drinkList}" th:value="${drink.getId()}" th:text="${drink.getName()}"></option>
+		</select>
+		<input type="submit" value="Change">
+	</form>
 </div>
 </body>
 </html>

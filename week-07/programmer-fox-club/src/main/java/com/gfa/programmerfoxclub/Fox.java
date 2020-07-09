@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Fox {
     static int idCounter;
-    private final int id;
-    private final String name;
-    private final List<Trick> trickList;
-    private final Food food;
-    private final Drink drink;
+    private int id;
+    private String name;
+    private List<Trick> trickList;
+    private Food food;
+    private Drink drink;
 
     public Fox(String name, Food food, Drink drink) {
        idCounter++;
@@ -46,6 +46,14 @@ public class Fox {
 
     public Drink getDrink() {
         return drink;
+    }
+
+    public void setFood(Food food) {
+        this.food = food;
+    }
+
+    public void setDrink(Drink drink) {
+        this.drink = drink;
     }
 }
 

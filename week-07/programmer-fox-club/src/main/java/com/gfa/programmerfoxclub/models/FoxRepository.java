@@ -1,5 +1,7 @@
 package com.gfa.programmerfoxclub.models;
 
+import com.gfa.programmerfoxclub.Drink;
+import com.gfa.programmerfoxclub.Food;
 import com.gfa.programmerfoxclub.Fox;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +20,12 @@ public interface FoxRepository {
     void remove(Fox fox);
 
     Fox findByName(String name);
+
+    List<Food> foodList ();
+
+    List<Drink> drinkList ();
+
+    void changeFoxFood(int foxId, int foodId);
+
+    void changeFoxDrink(int foxId, int drinkId);
 }

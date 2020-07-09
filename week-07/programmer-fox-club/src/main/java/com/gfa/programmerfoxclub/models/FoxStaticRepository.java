@@ -4,7 +4,7 @@ import com.gfa.programmerfoxclub.Drink;
 import com.gfa.programmerfoxclub.Food;
 import com.gfa.programmerfoxclub.Fox;
 import com.gfa.programmerfoxclub.Trick;
-import org.springframework.stereotype.Component;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class FoxStaticRepository implements FoxRepository{
         trickList.add(new Trick("HTML"));
         trickList.add(new Trick("JavaScript"));
         drinkList.add(new Drink("milk"));
-        foodList.add(new Food("melon"));
+        foodList.add(new Food("baby food"));
 
         foxList.add(new Fox("Mr. GreenFox",  foodList.get(0), drinkList.get(0)));
         foxList.get(0).addTrick(trickList.get(0));
@@ -40,7 +40,8 @@ public class FoxStaticRepository implements FoxRepository{
 
     @Override
     public void add(String foxName) {
-        this.foxList.add(new Fox(foxName, foodList.get(1), drinkList.get(1)));
+
+        this.foxList.add(new Fox(foxName, foodList.get(0), drinkList.get(0)));
     }
 
     @Override
@@ -59,7 +60,25 @@ public class FoxStaticRepository implements FoxRepository{
     }
 
     @Override
-    public Fox findByName(String name) {
-        return this.foxList.stream().filter(f->f.getName()==name).findFirst().get();
+    public Fox findByName(String foxName) {
+        return this.foxList.stream().filter(f->f.getName().equals(foxName)).findFirst().orElse(null);
+    }
+
+    public List<Food> foodList (){
+        return this.foodList;
+    }
+
+    public List<Drink> drinkList (){
+        return this.drinkList;
+    }
+
+    @Override
+    public void changeFoxFood(int foxId, int foodId) {
+        this.foxList.get(foxId).setFood(foodList.get(foodId));
+    }
+
+    @Override
+    public void changeFoxDrink(int foxId, int drinkId) {
+        this.foxList.get(foxId).setDrink(drinkList.get(drinkId));
     }
 }
