@@ -15,13 +15,14 @@
 	</nav>
 	<img src="greenfox.png" alt="green fox png" >
 	<div>
-		This is Mr. Fox. It knows few tricks.
+		This is <span th:text="${fox.getName()}"></span>. Currently living on <span th:text="${fox.getFood().name}"></span> and <span th:text="${fox.getDrink().name}"></span>.<span th:unless="${fox.trickList.isEmpty()}"> It knows few tricks.</span>
 	</div>
+	<br>
 	<div id="known-tricks">
 		<h2>Known tricks</h2>
-		<ul>
-			<li>write code</li>
-			<li>code in Java</li>
+		<p th:if="${fox.trickList.isEmpty()}">Does not know any of the tricks. Teach him!</p>
+		<ul th:each="trick: ${fox.trickList}">
+			<li th:text="${trick.name}"></li>
 		</ul>
 		</p>
 	</div>
