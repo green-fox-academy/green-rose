@@ -18,8 +18,8 @@ public class Food {
         return id;
     }
 
-    public int hungering() {
-        return this.amount--;
+    public int hungering(int amoout) {
+        return this.amount-=amount;
     }
 
     public void eat(int amount){

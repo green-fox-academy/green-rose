@@ -11,11 +11,11 @@
 <body>
 <div class="container">
 	<nav class="navbar navbar-dark">
-		<a class="navbar-brand" th:href="@{/}">information</a>
-		<a class="navbar-brand" th:href="@{/login}">login</a>
+		<a class="navbar-brand nav-link" th:href="@{/}">information</a>
+		<a class="navbar-brand nav-link" th:href="@{/login}">login</a>
 		<a class="navbar-brand nav-link disabled" th:href="@{/nutrition-store}">nutrition</a>
-		<a class="navbar-brand" th:href="@{/trick-center}">trick center</a>
-		<a class="navbar-brand" th:href="@{/action-history}">action history</a>
+		<a class="navbar-brand nav-link" th:href="@{/trick-center}">trick center</a>
+		<a class="navbar-brand nav-link" th:href="@{/action-history}">action history</a>
 	</nav>
 	<h2>Nutrition to <span th:text="${fox.getName()}"></span></h2>
 	<form action="nutrition-store" method="post" name="nutrition-form">
