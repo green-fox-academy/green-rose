@@ -1,14 +1,15 @@
-package com.gfa.programmerfoxclub.models;
-import com.gfa.programmerfoxclub.Drink;
-import com.gfa.programmerfoxclub.Food;
-import com.gfa.programmerfoxclub.Fox;
-import com.gfa.programmerfoxclub.Trick;
+package com.gfa.programmerfoxclub.services;
+import com.gfa.programmerfoxclub.models.Drink;
+import com.gfa.programmerfoxclub.models.Food;
+import com.gfa.programmerfoxclub.models.Fox;
+import com.gfa.programmerfoxclub.models.Trick;
+import com.gfa.programmerfoxclub.repositories.FoxRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class FoxServiceImpl implements FoxService{
+public class FoxServiceImpl implements FoxService {
 
     private final FoxRepository foxRepository;
 

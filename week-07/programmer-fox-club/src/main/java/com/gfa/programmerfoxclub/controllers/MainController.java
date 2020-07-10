@@ -1,10 +1,10 @@
 package com.gfa.programmerfoxclub.controllers;
 
-import com.gfa.programmerfoxclub.Drink;
-import com.gfa.programmerfoxclub.Food;
-import com.gfa.programmerfoxclub.Fox;
-import com.gfa.programmerfoxclub.Trick;
-import com.gfa.programmerfoxclub.models.FoxService;
+import com.gfa.programmerfoxclub.models.Drink;
+import com.gfa.programmerfoxclub.models.Food;
+import com.gfa.programmerfoxclub.models.Fox;
+import com.gfa.programmerfoxclub.models.Trick;
+import com.gfa.programmerfoxclub.services.FoxService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

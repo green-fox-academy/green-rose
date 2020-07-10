@@ -1,4 +1,4 @@
-package com.gfa.programmerfoxclub;
+package com.gfa.programmerfoxclub.models;
 
 public class Trick {
     private static int idCounter;

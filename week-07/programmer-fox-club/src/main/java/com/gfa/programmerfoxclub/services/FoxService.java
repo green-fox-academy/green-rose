@@ -1,8 +1,8 @@
-package com.gfa.programmerfoxclub.models;
-import com.gfa.programmerfoxclub.Drink;
-import com.gfa.programmerfoxclub.Food;
-import com.gfa.programmerfoxclub.Fox;
-import com.gfa.programmerfoxclub.Trick;
+package com.gfa.programmerfoxclub.services;
+import com.gfa.programmerfoxclub.models.Drink;
+import com.gfa.programmerfoxclub.models.Food;
+import com.gfa.programmerfoxclub.models.Fox;
+import com.gfa.programmerfoxclub.models.Trick;
 
 import java.util.List;
 

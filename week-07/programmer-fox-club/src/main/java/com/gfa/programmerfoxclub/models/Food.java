@@ -1,4 +1,4 @@
-package com.gfa.programmerfoxclub;
+package com.gfa.programmerfoxclub.models;
 
 public class Food {
     private static int idCounter;
@@ -26,6 +26,9 @@ public class Food {
         this.amount+=amount;
     }
 
+    public int getAmount(){
+        return this.amount;
+    }
 
     public String getName() {
         return name;

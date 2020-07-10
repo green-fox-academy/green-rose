@@ -1,10 +1,9 @@
-package com.gfa.programmerfoxclub.models;
+package com.gfa.programmerfoxclub.repositories;
 
-import com.gfa.programmerfoxclub.Drink;
-import com.gfa.programmerfoxclub.Food;
-import com.gfa.programmerfoxclub.Fox;
-import com.gfa.programmerfoxclub.Trick;
-import org.springframework.stereotype.Service;
+import com.gfa.programmerfoxclub.models.Drink;
+import com.gfa.programmerfoxclub.models.Food;
+import com.gfa.programmerfoxclub.models.Fox;
+import com.gfa.programmerfoxclub.models.Trick;
 
 import java.util.List;
 

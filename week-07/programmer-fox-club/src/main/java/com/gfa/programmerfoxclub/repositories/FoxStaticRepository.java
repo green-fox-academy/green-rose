@@ -1,9 +1,9 @@
-package com.gfa.programmerfoxclub.models;
+package com.gfa.programmerfoxclub.repositories;
 
-import com.gfa.programmerfoxclub.Drink;
-import com.gfa.programmerfoxclub.Food;
-import com.gfa.programmerfoxclub.Fox;
-import com.gfa.programmerfoxclub.Trick;
+import com.gfa.programmerfoxclub.models.Drink;
+import com.gfa.programmerfoxclub.models.Food;
+import com.gfa.programmerfoxclub.models.Fox;
+import com.gfa.programmerfoxclub.models.Trick;
 
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class FoxStaticRepository implements FoxRepository{
+public class FoxStaticRepository implements FoxRepository {
     private final List<Fox> foxList;
     private final List<Trick> trickList;
     private final List<Drink> drinkList;
