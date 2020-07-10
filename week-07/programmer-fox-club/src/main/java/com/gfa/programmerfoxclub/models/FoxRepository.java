@@ -34,5 +34,7 @@ public interface FoxRepository {
 
     void addTrick(int foxId, int trickId);
 
+    Trick getTrickById(int trickId);
+
     public List<Trick> allowedTrickList(Fox fox);
 }

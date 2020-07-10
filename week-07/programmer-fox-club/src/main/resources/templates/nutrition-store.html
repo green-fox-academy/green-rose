@@ -10,32 +10,45 @@
 </head>
 <body>
 <div class="container">
-	<nav>
-		<a th:href="@{/(name=${fox.getName()})}">information</a>
-		<a th:href="@{/login(name=${fox.getName()})}">login</a>
-		<a th:href="@{/trick-center(name=${fox.getName()})}">trick center</a>
+	<nav class="navbar navbar-dark">
+		<a class="navbar-brand" th:href="@{/}">information</a>
+		<a class="navbar-brand" th:href="@{/login}">login</a>
+		<a class="navbar-brand nav-link disabled" th:href="@{/nutrition-store}">nutrition</a>
+		<a class="navbar-brand" th:href="@{/trick-center}">trick center</a>
+		<a class="navbar-brand" th:href="@{/action-history}">action history</a>
 	</nav>
+	<h2>Nutrition to <span th:text="${fox.getName()}"></span></h2>
 	<form action="nutrition-store" method="post" name="nutrition-form">
-		<input th:value="${fox.getId()}" name="foxId" type="hidden">
-		<label for="food">Food:</label>
-		<select name="foodId" id="food">
-			<option th:each="food:${foodList}" th:value="${food.getId()}" th:text="${food.getName()}"  th:selected="${food.getId()==fox.food.getId()}"></option>
-		</select>
-		<label for="drink">Drink:</label>
-		<select name="drinkId" id="drink">
-			<option th:each="drink:${drinkList}" th:value="${drink.getId()}" th:text="${drink.getName()}" th:selected="${drink.getId()==fox.drink.getId()}"></option>
-		</select>
-		<input type="submit" value="Change">
+		<div class="form-group">
+			<input th:value="${fox.getId()}" name="foxId" type="hidden">
+			<label for="food">Food:</label>
+			<select class="form-control" name="foodId" id="food">
+				<option th:each="food:${foodList}" th:value="${food.getId()}" th:text="${food.getName()}"  th:selected="${food.getId()==fox.food.getId()}"></option>
+			</select>
+			<label for="drink">Drink:</label>
+			<select class="form-control" name="drinkId" id="drink">
+				<option th:each="drink:${drinkList}" th:value="${drink.getId()}" th:text="${drink.getName()}" th:selected="${drink.getId()==fox.drink.getId()}"></option>
+			</select>
+			<input class="btn btn-primary" type="submit" value="Change">
+		</div>
 	</form>
+	<br>
+	<hr>
+	<h4>Add new drinks to list</h4>
 	<form action="nutrition-store-drink" method="post" name="drink-form-add">
-		<label for="drinkName">New drink:</label>
-		<input type="text" name="drinkName" id="drinkName">
-		<input type="submit" value="Add new drink!">
+		<div class="form-group">
+			<label for="drinkName">New drink:</label>
+			<input class="form-control" type="text" name="drinkName" id="drinkName">
+			<input class="btn btn-primary" type="submit" value="Add new drink!">
+		</div>
 	</form>
+	<h4>Add new foods to list</h4>
 	<form action="nutrition-store-food" method="post" name="food-form-add">
-		<label for="foodName">New food:</label>
-		<input type="text" name="foodName" id="foodName">
-		<input type="submit" value="Add new food!">
+		<div class="form-group">
+			<label for="foodName">New food:</label>
+			<input class="form-control" type="text" name="foodName" id="foodName">
+			<input class="btn btn-primary" type="submit" value="Add new food!">
+		</div>
 	</form>
 </div>
 </body>

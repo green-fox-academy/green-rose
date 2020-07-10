@@ -67,5 +67,10 @@ public class FoxServiceImpl implements FoxService{
         this.foxRepository.addTrick(foxId,trickId);
     }
 
+    @Override
+    public Trick getTrickById(int trickId) {
+        return this.foxRepository.getTrickById(trickId);
+    }
+
 
 }

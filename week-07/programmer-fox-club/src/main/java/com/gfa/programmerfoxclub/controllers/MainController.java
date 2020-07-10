@@ -69,8 +69,15 @@ public class MainController {
             @RequestParam(name = "foxId") int foxId,
             Model m
             ){
-        this.foxService.chaneFoxDrink(foxId,drinkId);
-        this.foxService.chaneFoxFood(foxId,foodId);
+
+        if (drinkId!=this.currentFox.getDrink().getId()) {
+            this.foxService.chaneFoxDrink(foxId, drinkId);
+            this.currentFox.addAction("Drink changed to " + this.currentFox.getDrink().getName()+".");
+        }
+        if (foodId!=this.currentFox.getFood().getId()) {
+            this.foxService.chaneFoxFood(foxId, foodId);
+            this.currentFox.addAction("Food changed to " + this.currentFox.getFood().getName()+".");
+        }
         return "redirect:/";
     }
     @PostMapping(value = {"/nutrition-store-drink"})
@@ -105,8 +112,11 @@ public class MainController {
             Model m
     ){
         this.foxService.addTrick(foxId,trickId);
+        this.currentFox.addAction("New trick "+this.foxService.getTrickById(trickId).getName()+" added.");
+
         return "redirect:/";
     }
+
     @PostMapping(value = {"/trick-center-add"})
     public String tricksAddedHandled(
             @RequestParam(name = "trickName") String trickName,
@@ -114,5 +124,12 @@ public class MainController {
     ){
         this.foxService.trickList().add(new Trick(trickName));
         return "redirect:/";
+    }
+
+    @GetMapping(value = {"/action-history"})
+    public String actionHistory(Model m){
+        if (currentFox==null) return  "redirect:login";
+        m.addAttribute("fox",currentFox);
+        return "action-history";
     }
 }

@@ -6,28 +6,38 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="/styles.css">
-	<title>Green Fox Programmer Club</title>
+	<title>Tricks GF Programmer Club</title>
 </head>
 <body>
 <div class="container">
-	<nav>
-		<a th:href="@{/(name=${fox.getName()})}">information</a>
-		<a th:href="@{/login(name=${fox.getName()})}">login</a>
-		<a th:href="@{/trick-center(name=${fox.getName()})}">trick center</a>
+	<nav class="navbar navbar-dark">
+		<a class="navbar-brand" th:href="@{/}">information</a>
+		<a class="navbar-brand" th:href="@{/login}">login</a>
+		<a class="navbar-brand" th:href="@{/nutrition-store}">nutrition</a>
+		<a class="navbar-brand " th:href="@{/trick-center}">trick center</a>
+		<a class="navbar-brand" th:href="@{/action-history}">action history</a>
 	</nav>
+	<h2>Tricks of <span th:text="${fox.getName()}"></span></h2>
 	<p th:if="${trickList.size()==0}">No tricks to learn!</p>
-	<form th:if="${trickList.size()>0}" action="trick-center" method="post" name="trick-form">
-		<input th:value="${fox.getId()}" name="foxId" type="hidden">
-		<label for="trick">Trick:</label>
-		<select name="trickId" id="trick">
-			<option th:each="trick:${trickList}" th:value="${trick.getId()}" th:text="${trick.getName()}"></option>
-		</select>
-		<input type="submit" value="Learn">
+	<form class="form-inline" th:if="${trickList.size()>0}" action="trick-center" method="post" name="trick-form">
+		<div class="form-group">
+			<input class="form-control" th:value="${fox.getId()}" name="foxId" type="hidden">
+			<label for="trick">Trick:</label>
+			<select class="form-control" name="trickId" id="trick">
+				<option th:each="trick:${trickList}" th:value="${trick.getId()}" th:text="${trick.getName()}"></option>
+			</select>
+			<input class="btn btn-primary" type="submit" value="Learn">
+		</div>
 	</form>
+	<br>
+	<hr>
+	<h4>Add new tricks to list</h4>
 	<form action="trick-center-add" method="post" name="trick-form-add">
-		<label for="trickName">Trick:</label>
-		<input type="text" name="trickName" id="trickName">
-		<input type="submit" value="Add new!">
+		<div class="form-group">
+			<label for="trickName">Trick:</label>
+			<input class="form-control" type="text" name="trickName" id="trickName">
+			<input class="btn btn-primary" type="submit" value="Add new!">
+		</div>
 	</form>
 </div>
 </body>

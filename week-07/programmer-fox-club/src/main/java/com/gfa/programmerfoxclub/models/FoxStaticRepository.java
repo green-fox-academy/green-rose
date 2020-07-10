@@ -99,7 +99,12 @@ public class FoxStaticRepository implements FoxRepository{
     @Override
     public void addTrick(int foxId, int trickId) {
         Fox fox = this.findById(foxId);
-        Trick trick = this.trickList.stream().filter(t->t.getId()==trickId).findFirst().orElse(null);
+        Trick trick = this.getTrickById(trickId);
         if(fox!=null && trick!=null) fox.addTrick(trick);
+    }
+
+    @Override
+    public Trick getTrickById(int trickId) {
+        return this.trickList.stream().filter(t->t.getId()==trickId).findFirst().orElse(null);
     }
 }

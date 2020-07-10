@@ -19,4 +19,5 @@ public interface FoxService {
     List<Trick> trickList();
     List<Trick> allowedTrickList(Fox fox);
     void addTrick(int foxId, int trickId);
+    Trick getTrickById(int trickId);
 }

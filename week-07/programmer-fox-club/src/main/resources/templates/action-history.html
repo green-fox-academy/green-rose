@@ -6,29 +6,24 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="/styles.css">
-	<title>Login GF Programmer Club</title>
+	<title>Actions GF Programmer Club</title>
 </head>
 <body>
 <div class="container">
 	<nav class="navbar navbar-dark">
 		<a class="navbar-brand" th:href="@{/}">information</a>
-		<a class="navbar-brand  nav-link disabled" th:href="@{/login}">login</a>
+		<a class="navbar-brand" th:href="@{/login}">login</a>
 		<a class="navbar-brand" th:href="@{/nutrition-store}">nutrition</a>
 		<a class="navbar-brand" th:href="@{/trick-center}">trick center</a>
-		<a class="navbar-brand" th:href="@{/action-history}">action history</a>
+		<a class="navbar-brand nav-link disabled" th:href="@{/action-history}">action history</a>
 	</nav>
-	<h2>Login</h2>
-	<form action="/login" method="post" name="login-form">
-		<div class="form-group">
-			<label for="name">Name of your fox:</label>
-			<input class="form-control" type="text" name="name" id="name" required>
-			<input class="btn btn-primary" type="submit" value="Find or create!">
-		</div>
-	</form>
-	<div th:if="${!foxList.isEmpty()}">
-		<ul th:each="fox:${foxList}">
-			<li><a th:href="@{/login(name=${fox.getName()})}" th:text="'Login as '+${fox.getName()}"></a></li>
+	<div id="action-history">
+		<h2>Action History of <span th:text="${fox.getName()}"></span></h2>
+		<p th:if="${fox.getActionList().isEmpty()}">Does not have history so far!</p>
+		<ul th:each="action: ${fox.actionList}">
+			<li th:text="${action}"></li>
 		</ul>
+		</p>
 	</div>
 </div>
 </body>

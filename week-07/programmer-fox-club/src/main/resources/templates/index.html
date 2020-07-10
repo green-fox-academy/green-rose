@@ -10,21 +10,32 @@
 </head>
 <body>
 <div class="container">
-	<nav>
-		<a th:href="@{/login/(name=${fox.getName()})}">login</a>
-		<a th:href="@{/nutrition-store(name=${fox.getName()})}">nutrition</a>
-		<a th:href="@{/trick-center(name=${fox.getName()})}">trick center</a>
+	<nav class="navbar navbar-dark">
+		<a class="navbar-brand nav-link disabled" th:href="@{/}">information</a>
+		<a class="navbar-brand" th:href="@{/login}">login</a>
+		<a class="navbar-brand" th:href="@{/nutrition-store}">nutrition</a>
+		<a class="navbar-brand" th:href="@{/trick-center}">trick center</a>
+		<a class="navbar-brand" th:href="@{/action-history}">action history</a>
 	</nav>
+	<h2>Information about <span th:text="${fox.getName()}"></span></h2>
 	<img src="greenfox.png" alt="green fox png" >
 	<div>
 		This is <span th:text="${fox.getName()}"></span>. Currently living on <span th:text="${fox.getFood().name}"></span> and <span th:text="${fox.getDrink().name}"></span>.<span th:unless="${fox.trickList.isEmpty()}"> It knows few tricks.</span>
 	</div>
 	<br>
 	<div id="known-tricks">
-		<h2>Known tricks</h2>
+		<h4>Known tricks</h4>
 		<p th:if="${fox.trickList.isEmpty()}">Does not know any of the tricks. Teach him!</p>
 		<ul th:each="trick: ${fox.trickList}">
 			<li th:text="${trick.name}"></li>
+		</ul>
+		</p>
+	</div>
+	<div id="action-history">
+		<h4>Action History</h4>
+		<p th:if="${fox.getActionList(5).isEmpty()}">Does not have history so far!</p>
+		<ul th:each="action: ${fox.getActionList(5)}">
+			<li th:text="${action}"></li>
 		</ul>
 		</p>
 	</div>
