@@ -1,7 +1,17 @@
-package com.gfa.todo;
+package com.gfa.todo.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Todo {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+
+
     private String title;
     private boolean urgent;
     private boolean done;
@@ -9,11 +19,11 @@ public class Todo {
 
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
