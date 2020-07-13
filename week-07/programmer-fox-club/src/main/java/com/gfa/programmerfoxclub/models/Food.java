@@ -18,7 +18,7 @@ public class Food {
         return id;
     }
 
-    public int hungering(int amoout) {
+    public int hungering(int amount) {
         return this.amount-=amount;
     }
 
