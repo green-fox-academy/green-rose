@@ -42,4 +42,16 @@ public class TodoController {
         this.todoRepository.deleteById(id);
         return "redirect:/todo/list";
     }
+
+    @GetMapping("{id}/edit")
+    public String editForm(@PathVariable Long id, Model m){
+        m.addAttribute("todo", this.todoRepository.findById(id).get());
+        return "edit-form";
+    }
+
+    @PostMapping("{id}/edit")
+    public String editHandling(@ModelAttribute Todo todo){
+        this.todoRepository.save(todo);
+        return "redirect:/todo/list";
+    }
 }
