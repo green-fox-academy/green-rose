@@ -36,4 +36,10 @@ public class TodoController {
         this.todoRepository.save(todo);
         return  "redirect:/todo/list";
     }
+
+    @GetMapping("{id}/delete")
+    public String delete(@PathVariable Long id){
+        this.todoRepository.deleteById(id);
+        return "redirect:/todo/list";
+    }
 }
