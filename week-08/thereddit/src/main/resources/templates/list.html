@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Post main page</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<h5><a href="post/add">Submit new post</a></h5>
+<h1>Trending posts</h1>
+<table class="table">
+	<tr th:each="post:${posts}">
+		<td th:text="${post.votes}!=null?${post.votes}:'-'"></td>
+		<td><a th:href=|post/${post.id}/plus|>+</a></td>
+		<td><a th:href=|post/${post.id}/minus|>-</a></td>
+		<td><a th:href="${post.url}" th:text="${post.title}"></a></td>
+	</tr>
+</table>
+</body>
+</html>
