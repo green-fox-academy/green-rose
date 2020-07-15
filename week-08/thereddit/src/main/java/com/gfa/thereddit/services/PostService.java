@@ -8,4 +8,7 @@ import java.util.List;
 @Service
 public interface PostService {
     List <Post> findAll();
+    Post findById(Long id);
+
+    void save(Post post);
 }

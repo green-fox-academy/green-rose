@@ -53,4 +53,9 @@ public class Post {
     public void setVotes(Integer votes) {
         this.votes = votes;
     }
+
+    public void vote(int i) {
+        if (this.votes==null) this.votes =0;
+        this.votes+=i;
+    }
 }
