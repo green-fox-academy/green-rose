@@ -2,16 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<title>Title</title>
+	<title>Todo</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 </head>
 <body>
 <h1>Todos for today:</h1>
-<table>
+<h5><a href="/todo/assignees">All assignees</a></h5>
+<div class="search-container">
+	<form action="/todo/search_result" name="searchForm" method="post">
+		<label for="search-container">Search for:</label>
+		<div class="search-container" id="search-container">
+			<input type="text" placeholder="...search in title, content or description" name="search" id="searchInput">
+			<button type="submit" id="searchBtn">Search</button>
+		</div>
+	</form>
+</div>
+<table class="table table-hover">
 	<thead>
 		<td>id</td>
 		<td>title</td>
 		<td>urgent</td>
 		<td>done</td>
+		<td>assignee</td>
+		<td>due</td>
 		<td></td>
 		<td></td>
 	</thead>
@@ -20,6 +35,8 @@
 		<td th:text="${todo.title}"></td>
 		<td th:text="${todo.urgent}"></td>
 		<td th:text="${todo.done}"></td>
+		<td th:text="${todo.assignee!=null && todo.assignee.name!=null}? ${todo.assignee.name}:''"></td>
+		<td th:text="${#dates.format(todo.date, 'yyyy-MM-dd HH:mm')}"></td>
 		<td> <a th:href=|/todo/${todo.id}/delete|>delete</a></td>
 		<td> <a th:href=|/todo/${todo.id}/edit|>edit</a></td>
 	</tr>

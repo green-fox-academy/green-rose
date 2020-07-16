@@ -2,6 +2,7 @@ package com.gfa.thereddit.controllers;
 
 
 import com.gfa.thereddit.models.Post;
+import com.gfa.thereddit.models.User;
 import com.gfa.thereddit.services.PostService;
 import com.gfa.thereddit.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -12,25 +13,43 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("post")
 public class PostController {
 
-    private PostService postService;
-    private UserService userService;
+    private final PostService postService;
+    private final UserService userService;
+    private User currentUser;
 
     public PostController(PostService postService, UserService userService) {
         this.userService = userService;
         this.postService = postService;
     }
 
-    @GetMapping(value = {"/","/list",""})
-    public String list(Model m){
-        m.addAttribute("posts",this.postService.findAll());
+    @GetMapping(value = {"/", "/list", ""})
 
+    public String list(Model m) {
+        if (currentUser == null) return "redirect:/post/login";
+        m.addAttribute("posts", this.postService.findAll());
+        m.addAttribute("user",this.currentUser);
         return "list";
     }
 
+    @GetMapping("login")
+    public String login() {
+        return "login";
+    }
+
+    @PostMapping("login")
+    public String loginHandled(@ModelAttribute User user) {
+        User match = this.userService.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+        if (match == null) {
+            return "redirect:/post/login";
+        }
+        this.currentUser=match;
+        return "redirect:/post/list";
+    }
+
     @GetMapping("{id}/plus")
-    public String plus(@PathVariable Long id){
+    public String plus(@PathVariable Long id) {
         Post post = this.postService.findById(id);
-        if (post!=null) {
+        if (post != null) {
             post.vote(1);
             this.postService.save(post);
         }
@@ -38,9 +57,9 @@ public class PostController {
     }
 
     @GetMapping("{id}/minus")
-    public String minus(@PathVariable Long id){
+    public String minus(@PathVariable Long id) {
         Post post = this.postService.findById(id);
-        if (post!=null) {
+        if (post != null) {
             post.vote(-1);
             this.postService.save(post);
         }
@@ -48,17 +67,17 @@ public class PostController {
     }
 
     @GetMapping("add")
-    public String addForm(Model m){
-        m.addAttribute("users",this.userService.findAll());
+    public String addForm(Model m) {
+        m.addAttribute("users", this.userService.findAll());
         return "add";
     }
 
     @PostMapping("add")
-    public String addFormHandling(@ModelAttribute Post post,  @RequestParam Long user_id){
+    public String addFormHandling(@ModelAttribute Post post, @RequestParam Long user_id) {
         post.setUser(this.userService.findById(user_id));
         post.setDate();
         this.postService.save(post);
-        return  "redirect:/post/list";
+        return "redirect:/post/list";
     }
 
 }

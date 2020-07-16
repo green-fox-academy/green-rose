@@ -10,6 +10,7 @@ import java.util.List;
 public interface UserService {
     List <User> findAll();
     User findById(Long id);
+    User findByUsernameAndPassword(String username, String password);
 
     void save(User user);
 

@@ -2,11 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<title>Title</title>
+	<title>Todo add form</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 </head>
 <body>
 <h1>Form adding ToDo:</h1>
-<form action="/todo/add"method="post" >
+<form class="form" action="/todo/add"method="post" >
 	<label for="title">Title:</label>
 	<input type="text" name="title" id="title">
 	<span> Is it urgent:</span>
@@ -19,6 +22,9 @@
 	<input type="radio" id="done" name="done" value="yes" checked>
 	<label for="notDone">No</label>
 	<input type="radio" id="notDone" name="done" value="no">
+	<select name="assignee_id" id="assignee">
+		<option th:each="assignee:${assignees}" th:value="${assignee.id}" th:text="${assignee.name}"></option>
+	</select>
 	<input type="submit" value="save ToDo">
 </form>
 </body>

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService{
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -23,6 +23,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public User findById(Long id) {
        return this.userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public User findByUsernameAndPassword(String username, String password) {
+        return this.userRepository.findByUsernameAndPassword(username,password);
     }
 
     @Override
