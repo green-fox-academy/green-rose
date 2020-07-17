@@ -2,9 +2,11 @@ package com.gfa.thereddit.controllers;
 
 
 import com.gfa.thereddit.models.Post;
+import com.gfa.thereddit.models.PostPage;
 import com.gfa.thereddit.models.User;
 import com.gfa.thereddit.services.PostService;
 import com.gfa.thereddit.services.UserService;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +26,13 @@ public class PostController {
 
     @GetMapping(value = {"/", "/list", ""})
 
-    public String list(Model m) {
+    public String list(@RequestParam(required = false) Integer page, Model m) {
         if (currentUser == null) return "redirect:/post/login";
-        m.addAttribute("posts", this.postService.findAll());
+        if (page==null) page=0;
+        PostPage postPage = this.postService.findAll(page);
+        m.addAttribute("posts", postPage.getPageList());
+        m.addAttribute("pages", postPage.getPages()-1);
+        m.addAttribute("page", page);
         m.addAttribute("user",this.currentUser);
         return "list";
     }
@@ -77,6 +83,17 @@ public class PostController {
         post.setUser(this.userService.findById(user_id));
         post.setDate();
         this.postService.save(post);
+        return "redirect:/post/list";
+    }
+
+    @GetMapping("add-user")
+    public String addUserForm() {
+        return "user";
+    }
+
+    @PostMapping("add-user")
+    public String addUserHandling(@ModelAttribute User user) {
+        this.userService.save(user);
         return "redirect:/post/list";
     }
 

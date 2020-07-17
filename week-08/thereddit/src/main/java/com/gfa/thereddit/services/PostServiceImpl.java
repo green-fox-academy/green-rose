@@ -1,7 +1,12 @@
 package com.gfa.thereddit.services;
 
 import com.gfa.thereddit.models.Post;
+import com.gfa.thereddit.models.PostPage;
 import com.gfa.thereddit.repositories.PostRepository;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +19,11 @@ public class PostServiceImpl implements  PostService{
         this.postRepository = postRepository;
     }
     @Override
-    public List<Post> findAll() {
-      return (List<Post>) this.postRepository.findAll();
+    public PostPage findAll(Integer pageNo) {
+        Page<Post> page = this.postRepository.findAll(
+                PageRequest.of(pageNo, 2, Sort.by(Sort.Direction.DESC, "votes")));
+        PostPage postPage = new PostPage(page.getContent(), page.getTotalPages());
+        return postPage;
     }
 
     @Override
