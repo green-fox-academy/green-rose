@@ -17,7 +17,10 @@
 		<input class="form-control" type="text" name="title" id="title">
 		<label for="url">URL:</label>
 		<input class="form-control" type="url" name="url" id="url">
-		<input class="form-control" type="hidden" name="user_id" id="user_id" th:value="${#session.getAttribute('user')}">
+		<label for="user">Choose user:</label>
+		<select class="form-control" name="user_id" id="user">
+			<option th:each="user:${users}" th:value="${user.id}" th:text="${user.username}"></option>
+		</select>
 		<input class="btn btn-primary" type="submit" value="save post">
 	</div>
 </form>

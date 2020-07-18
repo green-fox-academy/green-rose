@@ -4,7 +4,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 public class Post {
@@ -15,10 +14,6 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "user")
     private User user;
-
-    @OneToMany(mappedBy = "post")
-    List<Voting> votings;
-
     private String title;
     private String url;
     private Integer votes;
@@ -29,7 +24,6 @@ public class Post {
 
     public Post() {
     }
-
     public Post(String title, String url) {
        this(title, url,LocalDateTime.now());
     }

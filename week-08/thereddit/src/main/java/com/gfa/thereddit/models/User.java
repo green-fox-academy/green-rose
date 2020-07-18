@@ -16,17 +16,13 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
-    @OneToMany(mappedBy = "user")
-    List<Voting> votings;
+    public User() {
+    }
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.posts = new ArrayList<>();
-        this.votings = new ArrayList<>();
-    }
-
-    public User() {
     }
 
     public Long getId() {
