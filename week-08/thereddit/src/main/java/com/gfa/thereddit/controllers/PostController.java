@@ -11,13 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("post")
 public class PostController {
 
     private final PostService postService;
     private final UserService userService;
-    private User currentUser;
 
     public PostController(PostService postService, UserService userService) {
         this.userService = userService;
@@ -25,15 +26,14 @@ public class PostController {
     }
 
     @GetMapping(value = {"/", "/list", ""})
-
-    public String list(@RequestParam(required = false) Integer page, Model m) {
-        if (currentUser == null) return "redirect:/post/login";
+    public String list(@RequestParam(required = false) Integer page, Model m, HttpSession session) {
+        if (session.getAttribute("user")==null) return "redirect:/post/login";
         if (page==null) page=0;
         PostPage postPage = this.postService.findAll(page);
         m.addAttribute("posts", postPage.getPageList());
         m.addAttribute("pages", postPage.getPages()-1);
         m.addAttribute("page", page);
-        m.addAttribute("user",this.currentUser);
+        m.addAttribute("name", ((User)session.getAttribute("user")).getUsername());
         return "list";
     }
 
@@ -43,12 +43,12 @@ public class PostController {
     }
 
     @PostMapping("login")
-    public String loginHandled(@ModelAttribute User user) {
+    public String loginHandled(@ModelAttribute User user, HttpSession session) {
         User match = this.userService.findByUsernameAndPassword(user.getUsername(), user.getPassword());
         if (match == null) {
             return "redirect:/post/login";
         }
-        this.currentUser=match;
+        session.setAttribute("user", match);
         return "redirect:/post/list";
     }
 
@@ -73,8 +73,8 @@ public class PostController {
     }
 
     @GetMapping("add")
-    public String addForm(Model m) {
-        m.addAttribute("users", this.userService.findAll());
+    public String addForm(Model m, HttpSession session) {
+        if (session.getAttribute("user")==null) return "redirect:/post/login";
         return "add";
     }
 
