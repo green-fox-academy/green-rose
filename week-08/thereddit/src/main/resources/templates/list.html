@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container">
-<h5><a href="/post/add">Submit new post</a> <span th:class="float-right" th:text="${user.username}"> </span></h5>
+<h5><a href="/post/add">Submit new post</a> <span th:class="float-right" th:text="${name.username}"> </span></h5>
 <h1>Trending posts</h1>
 <ul class="pagination">
 	<li th:if="${page>0}" class="page-item"><a class="page-link" th:href="@{/post/list(page=${page}-1)}">Previous</a></li>
