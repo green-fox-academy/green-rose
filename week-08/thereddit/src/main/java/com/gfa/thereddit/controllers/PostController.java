@@ -4,9 +4,10 @@ package com.gfa.thereddit.controllers;
 import com.gfa.thereddit.models.Post;
 import com.gfa.thereddit.models.PostPage;
 import com.gfa.thereddit.models.User;
+import com.gfa.thereddit.models.Voting;
 import com.gfa.thereddit.services.PostService;
 import com.gfa.thereddit.services.UserService;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import com.gfa.thereddit.services.VotingService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +20,12 @@ public class PostController {
 
     private final PostService postService;
     private final UserService userService;
+    private final VotingService votingService;
 
-    public PostController(PostService postService, UserService userService) {
+    public PostController(PostService postService, UserService userService, VotingService votingService) {
         this.userService = userService;
         this.postService = postService;
+        this.votingService = votingService;
     }
 
     @GetMapping(value = {"/", "/list", ""})
@@ -52,22 +55,15 @@ public class PostController {
         return "redirect:/post/list";
     }
 
-    @GetMapping("{id}/plus")
-    public String plus(@PathVariable Long id) {
+    @GetMapping("{id}/{rating}")
+    public String plus(@PathVariable Long id, @PathVariable Integer rating, HttpSession session) {
+        if (session.getAttribute("user")==null) return "redirect:/post/login";
         Post post = this.postService.findById(id);
-        if (post != null) {
-            post.vote(1);
+        User user = ((User)session.getAttribute("user"));
+        if (post != null && user !=null) {
+            post.vote(rating);
             this.postService.save(post);
-        }
-        return "redirect:/post/list";
-    }
-
-    @GetMapping("{id}/minus")
-    public String minus(@PathVariable Long id) {
-        Post post = this.postService.findById(id);
-        if (post != null) {
-            post.vote(-1);
-            this.postService.save(post);
+            this.votingService.save(new Voting(user, post, rating));
         }
         return "redirect:/post/list";
     }
@@ -87,7 +83,8 @@ public class PostController {
     }
 
     @GetMapping("add-user")
-    public String addUserForm() {
+    public String addUserForm(HttpSession session) {
+        if (session.getAttribute("user")==null) return "redirect:/post/login";
         return "user";
     }
 

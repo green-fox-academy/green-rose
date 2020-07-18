@@ -7,8 +7,27 @@ import java.io.Serializable;
 @Embeddable
 public class VotingKey implements Serializable {
     @Column(name = "post_id")
-    Long postId;
+    private Long postId;
 
     @Column(name = "user_id")
-    Long userId;
+    private Long userId;
+
+    public VotingKey(){
+    };
+
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }

@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container">
-<h5><a href="/post/add">Submit new post</a> <span th:class="float-right" th:text="${name.username}"> </span></h5>
+<h5><a href="/post/add">Submit new post</a> <span th:class="float-right" th:text="${name}"> </span></h5>
 <h1>Trending posts</h1>
 <ul class="pagination">
 	<li th:if="${page>0}" class="page-item"><a class="page-link" th:href="@{/post/list(page=${page}-1)}">Previous</a></li>
@@ -20,8 +20,8 @@
 <table class="table">
 	<tr th:each="post:${posts}">
 		<td th:text="${post.votes}!=null?${post.votes}:'-'"></td>
-		<td><a th:href=|/post/${post.id}/plus|>+</a></td>
-		<td><a th:href=|/post/${post.id}/minus|>-</a></td>
+		<td><a th:href=|/post/${post.id}/1|>+</a></td>
+		<td><a th:href=|/post/${post.id}/-1|>-</a></td>
 		<td><a th:href="${post.url}" th:text="${post.title}"></a></td>
 		<td th:text="${#temporals.format(post.date, 'dd-MM-yyyy HH:mm')}"></td>
 		<td th:text="${post.user!=null && post.user.username!=null}? ${post.user.username}:''"></td>
