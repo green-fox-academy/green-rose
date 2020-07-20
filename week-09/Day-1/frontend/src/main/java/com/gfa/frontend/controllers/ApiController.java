@@ -1,14 +1,10 @@
 package com.gfa.frontend.controllers;
 
-import models.Doubling;
-import models.Error;
-import models.Greeter;
-import models.Appendable;
+import models.*;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import models.Appendable;
+import models.Error;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -53,9 +49,27 @@ public class ApiController {
 
     @GetMapping("/appenda")
     public Object appendaWOAppendable(HttpServletResponse response) {
-
         response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         return (new Error("Please provide appendable!"));
+    }
 
+  @PostMapping("/dountil/{action}")
+    public Object sumDoUntil(@RequestBody (required = false)Action na, HttpServletResponse response, @PathVariable String action) {
+        if (na!=null) {
+            switch (action) {
+                case "sum":
+                    response.setStatus(HttpServletResponse.SC_OK);
+                    return na.sum();
+                case "factor":
+                    response.setStatus(HttpServletResponse.SC_OK);
+                    return na.factor();
+                default:
+                    response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                    return (new Error("Wrong operation!"));
+            }
+        } else  {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return (new Error("Missing json"));
+        }
     }
 }
