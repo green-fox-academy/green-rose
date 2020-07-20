@@ -2,20 +2,20 @@ package models;
 
 
 public class Doubling {
- private final int input;
- private final long doubled;
+ private final int received;
+ private final long result;
 
- public Doubling(int input) {
-  this.input = input;
-  this.doubled = input*2;
+ public Doubling(int received) {
+  this.received = received;
+  this.result = received*2;
  }
 
- public int getInput() {
-  return input;
+ public int getReceived() {
+  return received;
  }
 
- public long getDoubled() {
-  return doubled;
+ public long getResult() {
+  return result;
  }
 
 }
