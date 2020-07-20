@@ -1,5 +1,8 @@
 package models;
 
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
 public class Action {
     private Integer until;
 
@@ -29,5 +32,13 @@ public class Action {
 
     public void setUntil(int until) {
         this.until = until;
+    }
+
+
+
+    public static class ReNumbersHandling {
+
+        public ReNumbersHandling() {
+        }
     }
 }

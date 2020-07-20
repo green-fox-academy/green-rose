@@ -1,5 +1,6 @@
 package com.gfa.frontend.controllers;
 
+import models.NumbersHandling;
 import models.*;
 
 import models.Appendable;
@@ -70,6 +71,14 @@ public class ApiController {
         } else  {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return (new Error("Missing json"));
+        }
+    }
+    @PostMapping("/arrays")
+    public Object arrays(@RequestBody (required = false) NumbersHandling nh, HttpServletResponse response) {
+        if (nh==null) {
+            return (new Error("Missing json"));
+        } else {
+            return nh.runHandling(response);
         }
     }
 }
