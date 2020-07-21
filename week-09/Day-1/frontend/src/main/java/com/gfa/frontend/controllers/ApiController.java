@@ -107,5 +107,14 @@ public class ApiController {
             return nh.runHandling(response);
         }
     }
-    
+
+    @PostMapping("/sith")
+    public ResponseEntity<?> sith(@RequestBody (required = false) Sith sith, HttpServletResponse response) {
+        if (sith==null || sith.getText()=="") {
+            return new ResponseEntity<>(new Error("Feed me some text you have to, padawan young you are. Hmmm."), HttpStatus.NOT_FOUND);
+        } else {
+
+            return  new ResponseEntity<>(sith, HttpStatus.OK);
+        }
+    }
 }
