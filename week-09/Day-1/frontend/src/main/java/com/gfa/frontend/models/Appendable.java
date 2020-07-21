@@ -1,4 +1,4 @@
-package models;
+package com.gfa.frontend.models;
 
 public class Appendable {
     private String appended;

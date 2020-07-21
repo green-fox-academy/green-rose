@@ -1,7 +1,4 @@
-package models;
-
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
+package com.gfa.frontend.models;
 
 public class Action {
     private Integer until;
@@ -34,11 +31,10 @@ public class Action {
         this.until = until;
     }
 
-
-
-    public static class ReNumbersHandling {
-
-        public ReNumbersHandling() {
-        }
+    @Override
+    public String toString() {
+        return "{" +
+                "until=" + until +
+                '}';
     }
 }

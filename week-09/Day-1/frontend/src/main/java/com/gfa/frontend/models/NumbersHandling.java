@@ -1,9 +1,8 @@
-package models;
+package com.gfa.frontend.models;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 public class NumbersHandling {
@@ -47,5 +46,13 @@ public class NumbersHandling {
 
     public void setNumbers(List<Integer> numbers) {
         this.numbers = numbers;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "what='" + what + "'" +
+                ", numbers=" + numbers +
+                "}";
     }
 }

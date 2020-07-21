@@ -1,4 +1,4 @@
-package models;
+package com.gfa.frontend.models;
 
 public class Greeter {
     private String welcome_message;

@@ -1,18 +1,29 @@
 package com.gfa.frontend.controllers;
 
-import models.NumbersHandling;
-import models.*;
-
-import models.Appendable;
-import models.Error;
+import com.gfa.frontend.models.*;
+import com.gfa.frontend.services.*;
+import com.gfa.frontend.models.Appendable;
+import com.gfa.frontend.models.Error;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Collections;
 
 @RestController
 public class ApiController {
+
+    public ApiController(LogService logService) {
+    }
+
+    @Autowired
+    LogService logService;
+
     @GetMapping("/doubling")
     public Object doubling(@RequestParam(required = false) String input) {
+        this.logService.save(new Log("/doubling", Collections.singletonMap("input", input).toString()));
         if (input == null) return (new Error());
         try {
             Integer.parseInt(input);
@@ -37,6 +48,9 @@ public class ApiController {
             } else
                 return (new Error("Please provide a title!"));
         } else {
+            this.logService.save(new Log(
+                    "/greeter",
+                    Collections.singletonMap("name", name).toString()+" , "+Collections.singletonMap("title", title).toString()));
             response.setStatus(HttpServletResponse.SC_OK);
             return (new Greeter(name, title));
         }
@@ -44,6 +58,9 @@ public class ApiController {
 
     @GetMapping("/appenda/{appendable}")
     public Object appenda(@PathVariable(required = false) String appendable,  HttpServletResponse response) {
+        this.logService.save(new Log(
+                "/appenda",
+                Collections.singletonMap("name", appendable).toString()));
         response.setStatus(HttpServletResponse.SC_OK);
         return (new Appendable(appendable));
     }
@@ -55,13 +72,19 @@ public class ApiController {
     }
 
   @PostMapping("/dountil/{action}")
-    public Object sumDoUntil(@RequestBody (required = false)Action na, HttpServletResponse response, @PathVariable String action) {
+    public Object sumDoUntil(@RequestBody (required = false) Action na, HttpServletResponse response, @PathVariable String action) {
         if (na!=null) {
             switch (action) {
                 case "sum":
+                    this.logService.save(new Log(
+                            "/appenda/sum",
+                            na.toString()));
                     response.setStatus(HttpServletResponse.SC_OK);
                     return na.sum();
                 case "factor":
+                    this.logService.save(new Log(
+                            "/appenda/factor",
+                            na.toString()));
                     response.setStatus(HttpServletResponse.SC_OK);
                     return na.factor();
                 default:
@@ -78,7 +101,11 @@ public class ApiController {
         if (nh==null) {
             return (new Error("Missing json"));
         } else {
+            this.logService.save(new Log(
+                    "/arrays",
+                    nh.toString()));
             return nh.runHandling(response);
         }
     }
+    
 }

@@ -3,13 +3,10 @@ package com.gfa.thereddit.services;
 import com.gfa.thereddit.models.Post;
 import com.gfa.thereddit.models.PostPage;
 import com.gfa.thereddit.repositories.PostRepository;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class PostServiceImpl implements  PostService{
