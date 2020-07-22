@@ -60,4 +60,14 @@ public class Log {
     public void setData(String data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id:" + id +
+                ", createdAt:" + createdAt +
+                ", endpoint='" + endpoint + '\'' +
+                ", data='" + data + '\'' +
+                '}';
+    }
 }

@@ -117,4 +117,10 @@ public class ApiController {
             return  new ResponseEntity<>(sith, HttpStatus.OK);
         }
     }
+
+    @GetMapping("/log")
+    public String log(HttpServletResponse response) {
+        response.setStatus(HttpServletResponse.SC_OK);
+        return this.logService.findAll(1, 10).toString();
+    }
 }
