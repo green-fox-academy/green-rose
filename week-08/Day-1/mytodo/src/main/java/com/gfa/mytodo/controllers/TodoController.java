@@ -4,15 +4,9 @@ import com.gfa.mytodo.models.Assignee;
 import com.gfa.mytodo.models.Todo;
 import com.gfa.mytodo.repositories.AssigneeRepository;
 import com.gfa.mytodo.repositories.TodoRepository;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 @Controller
 @RequestMapping("/todo")
