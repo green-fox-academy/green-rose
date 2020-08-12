@@ -1,10 +1,7 @@
 package com.gfa.thereddit.controllers;
 
 
-import com.gfa.thereddit.models.Post;
-import com.gfa.thereddit.models.PostPage;
-import com.gfa.thereddit.models.User;
-import com.gfa.thereddit.models.Voting;
+import com.gfa.thereddit.models.*;
 import com.gfa.thereddit.services.PostService;
 import com.gfa.thereddit.services.UserService;
 import com.gfa.thereddit.services.VotingService;
@@ -13,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("post")
@@ -61,6 +59,13 @@ public class PostController {
         Post post = this.postService.findById(id);
         User user = ((User)session.getAttribute("user"));
         if (post != null && user !=null) {
+            //do not vote again in same direction
+            //VotingKey votingKey = new VotingKey(user.getId(),post.getId());
+            //Voting voting =  this.votingService.getVoting(votingKey);
+            Voting voting =  this.votingService.getVotingByUserAndPost(user, post);
+            if (voting!=null){
+                post.vote(-voting.getRating());
+            }
             post.vote(rating);
             this.postService.save(post);
             this.votingService.save(new Voting(user, post, rating));

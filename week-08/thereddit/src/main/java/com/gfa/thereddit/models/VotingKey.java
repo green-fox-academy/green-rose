@@ -3,6 +3,7 @@ package com.gfa.thereddit.models;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
 public class VotingKey implements Serializable {
@@ -12,9 +13,13 @@ public class VotingKey implements Serializable {
     @Column(name = "user_id")
     private Long userId;
 
-    public VotingKey(){
+    public VotingKey(Long postId, Long userId){
+        this.postId=postId;
+        this.userId=userId;
     };
 
+    public VotingKey(){
+    };
     public Long getPostId() {
         return postId;
     }
@@ -29,5 +34,19 @@ public class VotingKey implements Serializable {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VotingKey votingKey = (VotingKey) o;
+        return postId == votingKey.getPostId() &&
+                userId == votingKey.getPostId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPostId(), getPostId());
     }
 }
