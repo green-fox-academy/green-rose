@@ -22,15 +22,15 @@ public class ApiController {
     LogService logService;
 
     @GetMapping("/doubling")
-    public Object doubling(@RequestParam(required = false) String input) {
+    public ResponseEntity<?> doubling(@RequestParam(required = false) String input) {
         this.logService.save(new Log("/doubling", Collections.singletonMap("input", input).toString()));
-        if (input == null) return (new Error());
+        if (input == null) return new ResponseEntity<>(new Error(), HttpStatus.BAD_REQUEST);
         try {
             Integer.parseInt(input);
             Doubling doubling = new Doubling(Integer.parseInt(input));
-            return doubling;
+            return new ResponseEntity<>(doubling, HttpStatus.OK);
         } catch (NumberFormatException e) {
-            return (new Error("Its not an integer!"));
+            return new ResponseEntity<>(new Error("Its not an integer!"), HttpStatus.BAD_REQUEST);
         }
     }
 
