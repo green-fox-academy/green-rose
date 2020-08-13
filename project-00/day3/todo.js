@@ -19,18 +19,28 @@ const todoListElement = document.createElement('ul');
 mainDiv.appendChild(todoListElement);
 
 function addTodo() {
+
   const newToDoElement = document.createElement('li');
   let newTodo = document.getElementById('newTodo');
   let newTodoText = newTodo.value.trim();
   todoList.push({"text":newTodoText, "done":false});
+
   const newTodoTextElement = document.createElement('span');
   newTodoTextElement.textContent = newTodoText;
   newToDoElement.appendChild(newTodoTextElement);
+
   const newTodoHandleElement = document.createElement('span');
   newTodoHandleElement.style.cssText = "float:right;"
-  newTodoHandleElement.textContent = "X";
+  newTodoHandleElement.textContent = "❌";
   newTodoHandleElement.addEventListener('click', removeTodo);
   newToDoElement.appendChild(newTodoHandleElement);
+
+  const newTodoDoneElement = document.createElement('span');
+  newTodoDoneElement.style.cssText = "float:right;"
+  newTodoDoneElement.textContent = "done";
+  newTodoDoneElement.addEventListener('click', doneTodo);
+  newToDoElement.appendChild(newTodoDoneElement);
+
   todoListElement.appendChild(newToDoElement);
   newTodo.value="";
 }
@@ -42,11 +52,28 @@ function removeTodo(event) {
    removedElement.parentNode.removeChild(removedElement);
 }
 
-  function removeTodoFromList(todoText) {
-      for (let index = 0; index < todoList.length; index++) {
-          if (todoList[index].text===todoText) {
-              todoList.splice(index,1);
-              return;
-          }
-      }
+function doneTodo(event) {
+    let doneElement = event.target.parentNode;
+    toggleTodo(doneElement.firstChild.textContent);
+    console.log(todoList);
+    event.target.textContent = event.target.textContent==="done" ? "undone": "done";
+ }
+
+function removeTodoFromList(todoText) {
+
+    for (let index = 0; index < todoList.length; index++) {
+        if (todoList[index].text===todoText) {
+            todoList.splice(index,1);
+            return;
+        }
+    }
+}
+
+function toggleTodo(todoText){
+    for (let index = 0; index < todoList.length; index++) {
+        if (todoList[index].text===todoText) {
+            todoList[index].done=!todoList[index].done;
+            return;
+        }
+    }
 }
