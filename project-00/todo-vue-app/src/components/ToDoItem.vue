@@ -11,10 +11,10 @@
               </i>
           <i v-on:click="editingTodo" v-b-tooltip.hover title="Edit task" class="fas fa-edit pull-right"></i>
       </div>
-      <div v-if="todo.done === true" class="btn btn-outline-success">
+      <div v-if="todo.done === true" v-on:click="changeStatus" class="btn btn-outline-success">
         Completed
       </div>
-      <div v-else class="btn btn-outline-warning">
+      <div v-else v-on:click="changeStatus" class="btn btn-outline-warning">
         Pendnig
       </div>
       </template>
@@ -49,7 +49,11 @@ export default {
       //this is wrong, should be handlen by parent ToDoList, but it works
       this.todo=this.todoEdited;
       this.editingTodo();
-    }  
+    },
+    changeStatus: function () {
+      this.todoEdited.done = !this.todoEdited.done;
+      this.todo=this.todoEdited;
+    }, 
 
 }
 }
