@@ -1,8 +1,8 @@
 <template>
   <div id="ToDoItem" class="card">
     <template v-if="!editing">
-      <h5>{{ todo.title }}</h5>
-      <div>{{ todo.project }}</div>
+      <h5>{{ todoEdited.title }}</h5>
+      <div>{{ todoEdited.project }}</div>
       <div class="edit-icons">
           <i 
               v-on:click="$emit('delete-item')"
@@ -11,13 +11,15 @@
               </i>
           <i v-on:click="editingTodo" v-b-tooltip.hover title="Edit task" class="fas fa-edit pull-right"></i>
       </div>
-      <div v-if="todo.done === true" v-on:click="changeStatus" class="btn btn-outline-success">
+      <!-- ToDo: One Div -->
+      <div v-if="todoEdited.done === true" v-on:click="changeStatus" class="btn btn-outline-success">
         Completed
       </div>
       <div v-else v-on:click="changeStatus" class="btn btn-outline-warning">
         Pendnig
       </div>
       </template>
+      <!-- ToDo: Edit=CreateToDo-->
       <template v-else>
         <b-form  @submit.stop.prevent>
           <b-form-group label="Title" label-for="title">
@@ -27,7 +29,7 @@
             <b-form-input id="project" v-model="todoEdited.project" type="text"></b-form-input>
           </b-form-group>
         </b-form>
-        <div class="btn btn-outline-primary" v-on:click="editTodo">Change</div>
+        <div class="btn btn-outline-primary" v-on:click="editToDo">Change</div>
       </template>
   </div>
 </template>
@@ -45,14 +47,15 @@ export default {
     editingTodo: function () {
       this.editing = !this.editing;
     },
-    editTodo: function(){
+    editToDo: function(){
       //this is wrong, should be handlen by parent ToDoList, but it works
-      this.todo=this.todoEdited;
-      this.editingTodo();
+      //this.todo=this.todoEdited;
+      this.$emit('editTodo', this.todoEdited)
+      this.editingTodo(this.todoEdited);
     },
     changeStatus: function () {
       this.todoEdited.done = !this.todoEdited.done;
-      this.todo=this.todoEdited;
+      this.$emit('editTodo', this.todoEdited)
     }, 
 
 }

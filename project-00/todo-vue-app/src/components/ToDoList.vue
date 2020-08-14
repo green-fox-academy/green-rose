@@ -1,7 +1,7 @@
 <template>
   <div id="ToDoList">
     <div class = "todo-item-wrapper" v-for="todo in todos" :key="todo.title" >
-      <ToDoItem v-bind:todo="todo"  v-on:delete-item="deleteTodo(todo)"/>
+      <ToDoItem v-bind:todo="todo" v-on:editTodo="editTodo(todo, $event)" v-on:delete-item="deleteTodo(todo)"/>
     </div>
     <CreateToDo v-on:addToDo="addTodo($event)"/>
   </div>
@@ -23,11 +23,18 @@ export default {
       for (let index = 0; index < this.todos.length; index++) {
         if(this.todos[index]===todo){
           this.todos.splice(index, 1);
+          return
         }
       }
     },
     addTodo: function (todo) {
       this.todos.push(todo);
+    },
+    editTodo: function (todo, todoEdited) {
+      console.log(todoEdited);
+      const todoIndex = this.todos.indexOf(todo);
+      console.log(this.todos[todoIndex]);
+      this.todos[todoIndex]=todoEdited;
     },
   }
 }
