@@ -1,17 +1,20 @@
 <template>
-  <ul id="ToDoList">
-    <li  v-for="todo in todos" :key="todo.title" >
-      {{ todo.title }}
-      {{ todo.project }}
-      {{ todo.done }}
-    </li>
-  </ul>
+  <div id="ToDoList">
+    <div v-for="todo in todos" :key="todo.title" >
+      <ToDoItem v-bind:todo="todo"/>
+    </div>
+  </div>
 </template>
 
 <script>
+import ToDoItem from './ToDoItem.vue'
+
 export default {
   name: 'ToDoList',
-  props: ['todos']
+  props: ['todos'],
+  components: {
+    ToDoItem,
+  },
 }
 </script>
 
