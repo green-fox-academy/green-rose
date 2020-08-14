@@ -31,9 +31,7 @@ export default {
       this.todos.push(todo);
     },
     editTodo: function (todo, todoEdited) {
-      console.log(todoEdited);
       const todoIndex = this.todos.indexOf(todo);
-      console.log(this.todos[todoIndex]);
       this.todos[todoIndex]=todoEdited;
     },
   }

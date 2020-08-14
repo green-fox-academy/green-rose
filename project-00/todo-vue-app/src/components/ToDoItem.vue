@@ -50,12 +50,12 @@ export default {
     editToDo: function(){
       //this is wrong, should be handlen by parent ToDoList, but it works
       //this.todo=this.todoEdited;
-      this.$emit('editTodo', this.todoEdited)
+      this.$emit('editTodo', this.todoEdited);
       this.editingTodo(this.todoEdited);
     },
     changeStatus: function () {
       this.todoEdited.done = !this.todoEdited.done;
-      this.$emit('editTodo', this.todoEdited)
+      this.$emit('editTodo', this.todoEdited);
     }, 
 
 }
