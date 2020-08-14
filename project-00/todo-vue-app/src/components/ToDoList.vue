@@ -1,6 +1,6 @@
 <template>
   <div id="ToDoList">
-    <div v-for="todo in todos" :key="todo.title" >
+    <div class = "todo-item-wrapper" v-for="todo in todos" :key="todo.title" >
       <ToDoItem v-bind:todo="todo"/>
     </div>
   </div>
@@ -20,8 +20,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-li {
- text-align: left;
+  .todo-item-wrapper {
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 2px;
+  margin: 5px;
+  border-radius: 5px;
 }
 </style>
