@@ -4,8 +4,12 @@
       <h5>{{ todo.title }}</h5>
       <div>{{ todo.project }}</div>
       <div class="edit-icons">
-          <i class="fas fa-trash-alt pull-right" v-b-tooltip.hover title="Delete task"></i>
-          <i v-on:click="editTodo" v-b-tooltip.hover title="Edit task" class="fas fa-edit pull-right"></i>
+          <i 
+              v-on:click="$emit('delete-item')"
+              class="fas fa-trash-alt pull-right" 
+              v-b-tooltip.hover title="Delete task">
+              </i>
+          <i v-on:click="editingTodo" v-b-tooltip.hover title="Edit task" class="fas fa-edit pull-right"></i>
       </div>
       <div v-if="todo.done === true" class="btn btn-outline-success">
         Completed
@@ -17,13 +21,13 @@
       <template v-else>
         <b-form  @submit.stop.prevent>
           <b-form-group label="Title" label-for="title">
-            <b-form-input id="title" v-model="todo.title" type="titlel"></b-form-input>
+            <b-form-input id="title" v-model="todoEdited.title" type="text"></b-form-input>
           </b-form-group>
           <b-form-group label="project" label-for="project">
-            <b-form-input id="project" v-model="todo.project" type="project"></b-form-input>
+            <b-form-input id="project" v-model="todoEdited.project" type="text"></b-form-input>
           </b-form-group>
-          <button v-on:click="editTodo">Change</button>
         </b-form>
+        <div class="btn btn-outline-primary" v-on:click="editTodo">Change</div>
       </template>
   </div>
 </template>
@@ -34,12 +38,18 @@ export default {
   data: function () {
     return {
       editing: false,
+      todoEdited: {...this.todo}
     }
   },
   methods: {
-    editTodo: function () {
+    editingTodo: function () {
       this.editing = !this.editing;
-    }
+    },
+    editTodo: function(){
+      this.todo=this.todoEdited;
+      this.editingTodo();
+    }  
+
 }
 }
 </script>
