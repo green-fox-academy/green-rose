@@ -46,6 +46,7 @@ export default {
       this.editing = !this.editing;
     },
     editTodo: function(){
+      //this is wrong, should be handlen by parent ToDoList, but it works
       this.todo=this.todoEdited;
       this.editingTodo();
     }  
