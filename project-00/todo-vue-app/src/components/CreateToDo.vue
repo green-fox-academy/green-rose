@@ -10,8 +10,7 @@
           <b-form-input id="project" v-model="todo.project" type="text"></b-form-input>
         </b-form-group>
         </b-form>
-        <div class="btn btn-outline-primary" v-on:click="addToDo" >Add</div>
-
+        <button class="btn btn-outline-primary" v-on:click="addToDo" >Add</button>
     </template>
   </div>
 </template>
@@ -28,7 +27,11 @@ export default {
   },
   methods: {
     addToDo() {
-     this.$emit('addToDo', this.todo)
+     this.$emit('addToDo',{...this.todo});
+     this.todo.title="";
+     this.todo.project="";
+     this.todo.done=false;
+     
    }
 
 }

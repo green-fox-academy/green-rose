@@ -18,26 +18,26 @@
       <div v-else v-on:click="changeStatus" class="btn btn-outline-warning">
         Pendnig
       </div>
-      </template>
+    </template>
       <!-- ToDo: Edit=CreateToDo-->
-      <template v-else>
-        <b-form  @submit.stop.prevent>
-          <b-form-group label="Title" label-for="title">
-            <b-form-input id="title" v-model="todoEdited.title" type="text"></b-form-input>
-          </b-form-group>
-          <b-form-group label="project" label-for="project">
-            <b-form-input id="project" v-model="todoEdited.project" type="text"></b-form-input>
-          </b-form-group>
-        </b-form>
-        <div class="btn btn-outline-primary" v-on:click="editToDo">Change</div>
-      </template>
+    <template v-else>
+      <b-form  @submit.stop.prevent>
+        <b-form-group label="Title" label-for="title">
+          <b-form-input id="title" v-model="todoEdited.title" type="text"></b-form-input>
+        </b-form-group>
+        <b-form-group label="project" label-for="project">
+          <b-form-input id="project" v-model="todoEdited.project" type="text"></b-form-input>
+        </b-form-group>
+      </b-form>
+      <div class="btn btn-outline-primary" v-on:click="editToDo">Change</div>
+    </template>
   </div>
 </template>
 <script>
 export default {
   name: 'ToDoItem',
   props: {todo: Object},
-  data: function () {
+  data () {
     return {
       editing: false,
       todoEdited: {...this.todo}
