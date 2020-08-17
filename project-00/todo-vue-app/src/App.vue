@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/greenfox.png">
-    <ToDo msg="Welcome to Mila's ToDo Vue App"/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -17,13 +17,8 @@ Vue.use(IconsPlugin)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import ToDo from './components/ToDo.vue'
-
 export default {
   name: 'App',
-  components: {
-    ToDo
-  }
 }
 </script>
 

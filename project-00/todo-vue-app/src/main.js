@@ -1,16 +1,20 @@
 import Vue from 'vue'
-import App from './App.vue'
 import VueRouter from 'vue-router'
+import App from './App.vue'
+import Home from './components/Home.vue'
+import ToDo from './components/ToDo.vue'
+
 Vue.use(VueRouter)
 
 Vue.config.productionTip = false
 
 const routes = [
-  { path: '/', component: App },
+  { path: '/todo', component: ToDo },
+  { path: '/', component: Home },
 ]
 
 const router = new VueRouter({
-  routes // short for `routes: routes`
+  routes // short for routes: routes
 })
 
 new Vue({

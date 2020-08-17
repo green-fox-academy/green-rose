@@ -9,9 +9,6 @@
 import ToDoList from './ToDoList.vue'
 export default {
   name: 'ToDo',
-  props: {
-    msg: String
-  },
   components: {
     ToDoList,
   },
@@ -33,7 +30,8 @@ export default {
        title: 'Todo D',
        project: 'Project D',
        done: false,
-     }]
+     }],
+     msg: "Welcome to Mila's ToDo Vue App",
   }
   }
 }
