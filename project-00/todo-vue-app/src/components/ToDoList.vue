@@ -1,7 +1,7 @@
 <template>
   <div id="ToDoList">
     <div class = "todo-item-wrapper" v-for="todo in todos" :key="todo.title" >
-      <ToDoItem v-bind:todo="todo" v-on:editTodo="editTodo(todo, $event)" v-on:delete-item="deleteTodo(todo)"/>
+      <ToDoItem v-bind:todo="todo" v-on:editTodo="editTodo(todo, $event)" v-on:delete-item="deleteTodo($event)"/>
     </div>
     <CreateToDo v-on:addToDo="addTodo($event)"/>
   </div>

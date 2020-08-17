@@ -29,7 +29,7 @@
           <b-form-input id="project" v-model="todoEdited.project" type="text"></b-form-input>
         </b-form-group>
       </b-form>
-      <div class="btn btn-outline-primary" v-on:click="editToDo">Change</div>
+      <button class="btn btn-outline-primary" v-on:click="editToDo">Change</button>
     </template>
   </div>
 </template>
@@ -48,8 +48,7 @@ export default {
       this.editing = !this.editing;
     },
     editToDo: function(){
-      //this is wrong, should be handlen by parent ToDoList, but it works
-      //this.todo=this.todoEdited;
+      //this.todo=this.todoEdited; ! wrong, should be handlen by parent ToDoList, but it works
       this.$emit('editTodo', this.todoEdited);
       this.editingTodo(this.todoEdited);
     },

@@ -16,7 +16,7 @@
 </template>
 <script>
 export default {
-  data: function () {
+  data () {
     return {
       todo:{
         title: "",
@@ -28,10 +28,11 @@ export default {
   methods: {
     addToDo() {
      this.$emit('addToDo',{...this.todo});
-     this.todo.title="";
-     this.todo.project="";
-     this.todo.done=false;
-     
+     this.todo={
+        title: "",
+        project: "",
+        done: false,
+      };
    }
 
 }
